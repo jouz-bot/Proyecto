@@ -21,27 +21,27 @@
                 bottom: 0;
                 height: inherit;
             }
-            
+
             .ui-datalist .ui-datalist-content {
-        border:0 none
-    }
-     
-    .ui-datalist ul {
-        padding: 0px 10px 0 20px;
-        margin: 5px 0;
-    }
-     
-    .value {
-        font-weight: bold;
-    }
-     
-    .ui-autocomplete-itemtip {
-        -moz-box-sizing: content-box;
-        -webkit-box-sizing: content-box;
-        box-sizing: content-box;
-    }
+                border:0 none
+            }
+
+            .ui-datalist ul {
+                padding: 0px 10px 0 20px;
+                margin: 5px 0;
+            }
+
+            .value {
+                font-weight: bold;
+            }
+
+            .ui-autocomplete-itemtip {
+                -moz-box-sizing: content-box;
+                -webkit-box-sizing: content-box;
+                box-sizing: content-box;
+            }
         </style>
-        
+
     </h:head>
     <h:body>
         <!-- Navbar -->
@@ -72,10 +72,10 @@
 
         <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
         <div class="w3-main" style="margin-left:250px">
-            
-       
-        
-        
+
+
+
+
 
             <div class="w3-row w3-padding-64">
                 <div class="w3-twothird w3-container">
@@ -84,24 +84,24 @@
                     <!-- prime faces -->
                     <h:form>
                         <p:growl id="msgs" showDetail="true"></p:growl>
-                       
+
                         <h:panelGrid columns="2" cellpadding="5">
-                            
+
                             <p:outputLabel value="Tipo de Identificación:"></p:outputLabel>
                             <p:autoComplete  dropdown="true"></p:autoComplete>
-                       
+
                             <p:outputLabel value="Número de identificación:"></p:outputLabel>
                             <p:autoComplete ></p:autoComplete>
-                            
+
                             <p:outputLabel value="Nombre:"></p:outputLabel>
                             <p:autoComplete></p:autoComplete>
-                            
+
                             <p:outputLabel value="Primer Apellido:"></p:outputLabel>
                             <p:autoComplete ></p:autoComplete>
-                            
+
                             <p:outputLabel value="Segundo Apellido:"></p:outputLabel>
                             <p:autoComplete ></p:autoComplete>
-                            
+
                             <p:outputLabel value="Provincia:"></p:outputLabel>
                             <p:autoComplete  dropdown="true"></p:autoComplete>
                             <p:outputLabel value="Cantón:"></p:outputLabel>
@@ -110,30 +110,30 @@
                             <p:autoComplete  dropdown="true"></p:autoComplete>
                             <p:outputLabel value="Barrio:"></p:outputLabel>
                             <p:autoComplete  dropdown="true"></p:autoComplete>
-                            
-                             <p:outputLabel value="Otras Señas:"></p:outputLabel>
+
+                            <p:outputLabel value="Otras Señas:"></p:outputLabel>
                             <p:autoComplete ></p:autoComplete>
-                             <p:outputLabel value="Telefono:"></p:outputLabel>
+                            <p:outputLabel value="Telefono:"></p:outputLabel>
                             <p:autoComplete ></p:autoComplete>
-                             <p:outputLabel value="Correo:"></p:outputLabel>
+                            <p:outputLabel value="Correo:"></p:outputLabel>
                             <p:autoComplete ></p:autoComplete>
-                             <p:outputLabel value="Contraseña Temporal:"></p:outputLabel>
+                            <p:outputLabel value="Contraseña Temporal:"></p:outputLabel>
                             <p:autoComplete ></p:autoComplete>
-                            
-                             <p:outputLabel value="Disciplinas deportivas:"></p:outputLabel>
-                                
-        <p:selectCheckboxMenu id="menu"  label="Disciplinas">
-            <f:selectItems value=""></f:selectItems>
-           
-          
-        </p:selectCheckboxMenu>
+
+                            <p:outputLabel value="Disciplinas deportivas:"></p:outputLabel>
+
+                            <p:selectCheckboxMenu id="menu"  label="Disciplinas">
+                                <f:selectItems value=""></f:selectItems>
+
+
+                            </p:selectCheckboxMenu>
 
 
                         </h:panelGrid>
 
                         <p:commandButton value="Guardar"  ></p:commandButton>
-                       
-                      
+
+
                     </h:form>
 
                 </div>

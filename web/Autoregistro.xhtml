@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+    <h:head>
+        <title>Control de Acceso</title>
+    </h:head>
+    <h:body>
+        <div class="w3-container">
+            <!---->
+            <center>
+
+                <h2>Registro de Usuarios</h2>
+                <button onclick="document.getElementById('id01').style.display = 'block'" class="w3-button w3-green w3-large">Registrarse</button>
+
+            </center>
+
+            <div id="id01" class="w3-modal">
+                <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+                    <div class="w3-center"><br/>
+                        <span onclick="document.getElementById('id01').style.display = 'none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
+                         <img src="Resourses/img/grupo.png" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top"/>
+                    </div>
+
+                    <form class="w3-container" >
+                        <p:growl id="msgs" showDetail="true"></p:growl>
+
+                        <h:panelGrid columns="2" cellpadding="5">
+
+                            <p:outputLabel value="Tipo de Identificación:" ></p:outputLabel>
+                            <p:selectOneMenu style="width: 200px">
+                                <f:selectItem></f:selectItem>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Número de identificación:"></p:outputLabel>
+                            <p:autoComplete ></p:autoComplete>
+
+                            <p:outputLabel value="Nombre:"></p:outputLabel>
+                            <p:autoComplete></p:autoComplete>
+
+                            <p:outputLabel value="Primer Apellido:"></p:outputLabel>
+                            <p:autoComplete ></p:autoComplete>
+
+                            <p:outputLabel value="Segundo Apellido:"></p:outputLabel>
+                            <p:autoComplete ></p:autoComplete>
+
+                            <p:outputLabel value="Provincia:"></p:outputLabel>
+                            <p:selectOneMenu style="width: 200px">
+                                <f:selectItem></f:selectItem>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Cantón:"></p:outputLabel>
+                            <p:selectOneMenu style="width: 200px">
+                                <f:selectItem></f:selectItem>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Distrito:"></p:outputLabel>
+                            <p:selectOneMenu style="width: 200px">
+                                <f:selectItem></f:selectItem>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Barrio:"></p:outputLabel>
+                            <p:selectOneMenu style="width: 200px">
+                                <f:selectItem></f:selectItem>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Otras Señas:"></p:outputLabel>
+                            <p:autoComplete ></p:autoComplete>
+                            <p:outputLabel value="Telefono:"></p:outputLabel>
+                            <p:autoComplete ></p:autoComplete>
+                            <p:outputLabel value="Correo:"></p:outputLabel>
+                            <p:autoComplete ></p:autoComplete>
+
+                            <p:outputLabel value="Disciplina deportiva:"></p:outputLabel>
+                            <p:selectOneMenu style="width: 200px">
+                                <f:selectItem></f:selectItem>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Peso"></p:outputLabel>
+                            <p:autoComplete ></p:autoComplete>
+                            <p:outputLabel value="Talla"></p:outputLabel>
+                            <p:autoComplete ></p:autoComplete>
+                            <p:outputLabel value="Altura"></p:outputLabel>
+                            <p:autoComplete ></p:autoComplete>
+                            <p:outputLabel value="Objetivos del deporte"></p:outputLabel>
+                            <p:inputTextarea></p:inputTextarea>
+
+
+                        </h:panelGrid>
+
+                        <p:commandButton value="Guardar"  ></p:commandButton>
+                        <button type="button" class="w3-button w3-red">Cancelar</button>
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+
+    </h:body>
+</html>
+
