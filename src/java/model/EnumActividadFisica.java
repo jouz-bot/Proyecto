@@ -13,7 +13,7 @@ public enum EnumActividadFisica {
     //Definicion de enums
     CORRER(1, "Correr"), SALTAR(2, "Saltar"), NADAR(3, "Nadar");
 
-    //Definsiition de variables
+    //Definicion de variables
     public int COD_ACTIVIDAD_FISICA;
     public String DSC_ACTIVIDAD_FISICA;
     
