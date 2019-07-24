@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      import = "java.util.LinkedList">
     <h:head>
         <title>Reigistro de Instructores</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -100,7 +101,7 @@
                             <p:autoComplete ></p:autoComplete>
 
                             <p:outputLabel value="Provincia:"></p:outputLabel>
-                            <p:autoComplete  dropdown="true"></p:autoComplete>
+                            <p:autoComplete  dropdown="true" completeMethod="#{beanProvincias.listaTablaProvincia}" value="#{beanProvincias.COD_PROVINCIA}" id="pro"></p:autoComplete>
                             <p:outputLabel value="Cantón:"></p:outputLabel>
                             <p:autoComplete  dropdown="true"></p:autoComplete>
                             <p:outputLabel value="Distrito:"></p:outputLabel>
