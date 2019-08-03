@@ -23,10 +23,10 @@ import model.ProvinciasDB;
 @Named(value = "beanProvincias")
 @SessionScoped
 public class beanProvincias implements Serializable {
-    int COD_PROVINCIA;
+    float COD_PROVINCIA;
     String DSC_CORTA_PROVINCIA;
     String DSC_PROVINCIA;
-    int LOG_ACTIVO;
+    float LOG_ACTIVO;
     LinkedList<SelectItem> listaPro = new LinkedList<>();
     LinkedList<Provincias> listaTablaProvincia = new LinkedList<Provincias>();
 
@@ -64,7 +64,7 @@ public class beanProvincias implements Serializable {
 
     public LinkedList<SelectItem> getListaPro() throws SNMPExceptions, SQLException{
         String dscCortaProvincia="";
-        float codigoProvincia = 0;
+        double codigoProvincia = 0;
         
         LinkedList<Provincias> lista = new LinkedList<Provincias>();
         ProvinciasDB pDB = new ProvinciasDB();
@@ -87,11 +87,11 @@ public class beanProvincias implements Serializable {
         
     }
 
-    public int getCOD_PROVINCIA() {
+    public float getCOD_PROVINCIA() {
         return COD_PROVINCIA;
     }
 
-    public void setCOD_PROVINCIA(int COD_PROVINCIA) {
+    public void setCOD_PROVINCIA(float COD_PROVINCIA) {
         this.COD_PROVINCIA = COD_PROVINCIA;
     }
 
@@ -111,11 +111,11 @@ public class beanProvincias implements Serializable {
         this.DSC_PROVINCIA = DSC_PROVINCIA;
     }
 
-    public int getLOG_ACTIVO() {
+    public float getLOG_ACTIVO() {
         return LOG_ACTIVO;
     }
 
-    public void setLOG_ACTIVO(int LOG_ACTIVO) {
+    public void setLOG_ACTIVO(float LOG_ACTIVO) {
         this.LOG_ACTIVO = LOG_ACTIVO;
     }
 
@@ -134,5 +134,7 @@ public class beanProvincias implements Serializable {
     public void setProDB(ProvinciasDB proDB) {
         this.proDB = proDB;
     }
+
+
     
 }

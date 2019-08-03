@@ -1,17 +1,30 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package controller;
+
+import dao.SNMPExceptions;
+import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
+import java.io.Serializable;
+import java.sql.SQLException;
+import javax.naming.NamingException;
+import model.Persona;
+import model.PersonaDB;
 
 /**
  *
  * @author Jose_Cespedes
  */
-public class Persona {
+@Named(value = "beanRegistroUsuario")
+@SessionScoped
+public class beanRegistroUsuario implements Serializable {
 
-    //Lista de variables
+    /**
+     * Creates a new instance of beanRegistroUsuario
+     */
     int COD_PERSONA;
     int COD_TIPO_IDENTIFICACION;
     String NOMBRE_PERSONA;
@@ -25,32 +38,13 @@ public class Persona {
     String DSC_CORREO;
     String CONTRASENA;
     int COD_DISCIPLINA_DEPORTIVA;
-    int COD_DEPORTISTA;
+    int COD_DEPORTISTA = 0;
     int COD_ROL;
-
-    //Metodo constructor
-    public Persona() {
-    }
-
-    public Persona(int COD_PERSONA, int COD_TIPO_IDENTIFICACION, String NOMBRE_PERSONA, String APELLIDO1, String APELLIDO2, int COD_PROVINCIA, int COD_CANTON, int COD_DISTRITO, int COD_BARRIO, String OTRAS_SENAS, String DSC_CORREO, String CONTRASENA, int COD_DISCIPLINA_DEPORTIVA, int COD_DEPORTISTA, int COD_ROL) {
-        this.COD_PERSONA = COD_PERSONA;
-        this.COD_TIPO_IDENTIFICACION = COD_TIPO_IDENTIFICACION;
-        this.NOMBRE_PERSONA = NOMBRE_PERSONA;
-        this.APELLIDO1 = APELLIDO1;
-        this.APELLIDO2 = APELLIDO2;
-        this.COD_PROVINCIA = COD_PROVINCIA;
-        this.COD_CANTON = COD_CANTON;
-        this.COD_DISTRITO = COD_DISTRITO;
-        this.COD_BARRIO = COD_BARRIO;
-        this.OTRAS_SENAS = OTRAS_SENAS;
-        this.DSC_CORREO = DSC_CORREO;
-        this.CONTRASENA = CONTRASENA;
-        this.COD_DISCIPLINA_DEPORTIVA = COD_DISCIPLINA_DEPORTIVA;
-        this.COD_DEPORTISTA = COD_DEPORTISTA;
-        this.COD_ROL = COD_ROL;
-    }
     
-    //Metodos SET y GET
+    String mensaje = "";
+    
+    public beanRegistroUsuario() {
+    }
 
     public int getCOD_PERSONA() {
         return COD_PERSONA;
@@ -172,5 +166,53 @@ public class Persona {
         this.COD_ROL = COD_ROL;
     }
 
-     
+    public String getMensaje() {
+        return mensaje;
+    }
+    
+    public void limpiarCampos(){
+        this.setAPELLIDO1("");
+        this.setAPELLIDO2("");
+        this.setCOD_BARRIO(0);
+        this.setCOD_CANTON(0);
+        this.setCOD_DEPORTISTA(0);
+        this.setCOD_DISCIPLINA_DEPORTIVA(0);
+        this.setCOD_DISTRITO(0);
+        this.setCOD_PERSONA(0);
+        this.setCOD_PROVINCIA(0);
+        this.setCOD_ROL(0);
+        this.setCOD_TIPO_IDENTIFICACION(0);
+        this.setCONTRASENA("");
+        this.setDSC_CORREO("");
+        this.setMensaje("");
+        this.setNOMBRE_PERSONA("");
+        this.setOTRAS_SENAS("");
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+    
+        public void guardarPersona() throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
+        Persona vCan = new Persona();
+        PersonaDB vDB = new PersonaDB();
+        
+        vCan.setCOD_PERSONA(this.getCOD_PERSONA());
+        vCan.setNOMBRE_PERSONA(this.getNOMBRE_PERSONA());
+        vCan.setAPELLIDO1(this.getAPELLIDO1());
+        vCan.setAPELLIDO2(this.getAPELLIDO2());
+        vCan.setCOD_PROVINCIA(this.getCOD_PROVINCIA());
+        vCan.setCOD_CANTON(this.getCOD_CANTON());
+        vCan.setCOD_DISTRITO(this.getCOD_DISTRITO());
+        vCan.setCOD_BARRIO(this.getCOD_BARRIO());
+        vCan.setOTRAS_SENAS(this.getOTRAS_SENAS());
+        vCan.setCOD_DEPORTISTA(this.getCOD_DEPORTISTA());
+        vCan.setCOD_DISCIPLINA_DEPORTIVA(this.getCOD_DISCIPLINA_DEPORTIVA());
+        vCan.setCONTRASENA(this.getCONTRASENA());
+        vCan.setDSC_CORREO(this.getDSC_CORREO());
+        vCan.setCOD_ROL(this.getCOD_ROL());
+        
+        vDB.guardarPersona(vCan);
+        this.setMensaje("Se ha guardado el usuario correctamente");
+    }
 }
