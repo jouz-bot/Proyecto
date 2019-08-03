@@ -31,6 +31,7 @@ import javax.naming.NamingException;
  * @author Jose Herrera
  */
 
+
 public class AccesoDatos implements Serializable {
    
     /*Constante que identifica el motor de la base de datos*/
@@ -445,3 +446,5 @@ public class AccesoDatos implements Serializable {
     }
 
 }
+
+

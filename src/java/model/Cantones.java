@@ -12,39 +12,38 @@ package model;
 public class Cantones {
 
     //Definicion de variables
-    int COD_PROVINCIA;
-    int COD_CANTON;
+    float COD_PROVINCIA;
+    float COD_CANTON;
     String DSC_CANTON;
-    int LOG_ACTIVO;
+    float LOG_ACTIVO;
 
     //Metodo constructor
 
     public Cantones() {
     }
 
-    public Cantones(int COD_PROVINCIA, int COD_CANTON, String DSC_CANTON, int LOG_ACTIVO) {
+    public Cantones(float COD_PROVINCIA, float COD_CANTON, String DSC_CANTON, float LOG_ACTIVO) {
         this.COD_PROVINCIA = COD_PROVINCIA;
         this.COD_CANTON = COD_CANTON;
         this.DSC_CANTON = DSC_CANTON;
         this.LOG_ACTIVO = LOG_ACTIVO;
     }
     
-    
     //Metodos SET y GET
 
-    public int getCOD_PROVINCIA() {
+    public float getCOD_PROVINCIA() {
         return COD_PROVINCIA;
     }
 
-    public void setCOD_PROVINCIA(int COD_PROVINCIA) {
+    public void setCOD_PROVINCIA(float COD_PROVINCIA) {
         this.COD_PROVINCIA = COD_PROVINCIA;
     }
 
-    public int getCOD_CANTON() {
+    public float getCOD_CANTON() {
         return COD_CANTON;
     }
 
-    public void setCOD_CANTON(int COD_CANTON) {
+    public void setCOD_CANTON(float COD_CANTON) {
         this.COD_CANTON = COD_CANTON;
     }
 
@@ -56,12 +55,13 @@ public class Cantones {
         this.DSC_CANTON = DSC_CANTON;
     }
 
-    public int getLOG_ACTIVO() {
+    public float getLOG_ACTIVO() {
         return LOG_ACTIVO;
     }
 
-    public void setLOG_ACTIVO(int LOG_ACTIVO) {
+    public void setLOG_ACTIVO(float LOG_ACTIVO) {
         this.LOG_ACTIVO = LOG_ACTIVO;
     }
+
     
 }

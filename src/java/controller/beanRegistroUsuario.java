@@ -12,8 +12,14 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.LinkedList;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.naming.NamingException;
+import model.Cantones;
+import model.CantonesDB;
+import model.Distritos;
+import model.DistritosDB;
 import model.Persona;
 import model.PersonaDB;
 import model.Provincias;
@@ -43,7 +49,7 @@ public class beanRegistroUsuario implements Serializable {
     String DSC_CORREO;
     String CONTRASENA;
     int COD_DISCIPLINA_DEPORTIVA;
-    int COD_DEPORTISTA = 0;
+    int COD_DEPORTISTA;
     int COD_ROL;
     
     String mensaje = "";
@@ -95,7 +101,7 @@ public class beanRegistroUsuario implements Serializable {
         return COD_PROVINCIA;
     }
 
-    public void setCOD_PROVINCIA(int COD_PROVINCIA) {
+    public void setCOD_PROVINCIA(float COD_PROVINCIA) {
         this.COD_PROVINCIA = COD_PROVINCIA;
     }
 
@@ -103,7 +109,7 @@ public class beanRegistroUsuario implements Serializable {
         return COD_CANTON;
     }
 
-    public void setCOD_CANTON(int COD_CANTON) {
+    public void setCOD_CANTON(float COD_CANTON) {
         this.COD_CANTON = COD_CANTON;
     }
 
@@ -111,7 +117,7 @@ public class beanRegistroUsuario implements Serializable {
         return COD_DISTRITO;
     }
 
-    public void setCOD_DISTRITO(int COD_DISTRITO) {
+    public void setCOD_DISTRITO(float COD_DISTRITO) {
         this.COD_DISTRITO = COD_DISTRITO;
     }
 
@@ -119,7 +125,7 @@ public class beanRegistroUsuario implements Serializable {
         return COD_BARRIO;
     }
 
-    public void setCOD_BARRIO(int COD_BARRIO) {
+    public void setCOD_BARRIO(float COD_BARRIO) {
         this.COD_BARRIO = COD_BARRIO;
     }
 
@@ -220,67 +226,97 @@ public class beanRegistroUsuario implements Serializable {
         vDB.guardarPersona(vCan);
         this.setMensaje("Se ha guardado el usuario correctamente");
     }
+    
+//    Cargar provincias
+        public LinkedList<SelectItem> getListaProvincia() throws SNMPExceptions, SQLException {
+        float idProvincia;
+        String nombreProvincia;
 
-    float cod_provincia;
-    String dsc_corta_provincia;
-    String dsc_provincia = "Alajuela";
-    float log_activo;
-    LinkedList<SelectItem> listaPro = new LinkedList<>();
-    LinkedList<Provincias> listaTablaProvincia = new 
-        LinkedList<Provincias>();
-
-    public LinkedList<Provincias> getListaTablaProvincia() 
-            throws SNMPExceptions, SQLException {
-        
-        LinkedList<Provincias> lista = new 
-                    LinkedList<Provincias>();
+        LinkedList<Provincias> lista = new LinkedList<Provincias>();
         ProvinciasDB pDB = new ProvinciasDB();
-        
-        lista = pDB.moTodo();
-        
-        LinkedList resultLista = new LinkedList();
-           
-        resultLista=lista;       
-        return resultLista; 
+
+        try {
+             lista = pDB.moTodo();
+        } catch (Exception e) {
+            FacesContext context2 = FacesContext.getCurrentInstance();
+            context2.addMessage(null, new FacesMessage("Error", e.toString()));
+        }
+       
+
+        LinkedList resultList = new LinkedList();
+//        resultList.add(new SelectItem(0, "Seleccione una Provincia"));
+
+        for (Provincias pro : lista) {
+            idProvincia = pro.getCod_provincia();
+            nombreProvincia = pro.getDsc_provincia();
+            resultList.add(new SelectItem(idProvincia, nombreProvincia));
+        }
+        return resultList;
 
     }
+//    Cargar cantones
+    public LinkedList<SelectItem> getListaCantonPorProvincia() throws SNMPExceptions, SQLException {
+        float idCan;
+        String nombreCan = "";
 
-    public void setListaTablaProvincia(LinkedList<Provincias> listaTablaProvincia) {
-        this.listaTablaProvincia = listaTablaProvincia;
+        LinkedList<Cantones> lista = new LinkedList<Cantones>();
+        CantonesDB cDB = new CantonesDB();
+
+        if (this.COD_PROVINCIA == 0) {
+            return null;
+        }
+        try {
+            lista = cDB.seleccionarCantonesPorProvincia(COD_PROVINCIA);
+        } catch (Exception e) {
+            FacesContext context2 = FacesContext.getCurrentInstance();
+            context2.addMessage(null, new FacesMessage("Error", e.toString()));
+        }
+        
+
+        LinkedList resultList = new LinkedList();
+//        resultList.add(new SelectItem(0, "Seleccione un Canton"));
+
+        for (Cantones pro : lista) {
+            idCan = pro.getCOD_CANTON();
+            nombreCan = pro.getDSC_CANTON();
+            resultList.add(new SelectItem(idCan, nombreCan));
+        }
+        return resultList;
+
     }
     
-    Provincias pro;
-    ProvinciasDB proDB;
+//    Cargar distritos
+    public LinkedList<SelectItem> getListaDistritoPorCanton() throws SNMPExceptions, SQLException {
+        float idDistrito;
+        String nombreDistrito = "";
 
-    public void setListPro(LinkedList<SelectItem> listProv) {
-        this.listaPro= listProv;
-    }
+        LinkedList<Distritos> lista = new LinkedList<Distritos>();
+        DistritosDB dDB = new DistritosDB();
 
-    public LinkedList<SelectItem> getListaPro() 
-            throws SNMPExceptions, SQLException{
-        String dscCortaProvincia="";
-        float codigoProvincia=0;
+        if (this.COD_PROVINCIA == 0) {
+            return null;
+        }
+
+        if (this.COD_CANTON == 0) {
+            return null;
+        }
         
-        LinkedList<Provincias> lista = new 
-        LinkedList<Provincias>();
-        ProvinciasDB pDB = new ProvinciasDB();
+        try {
+            lista = dDB.seleccionarDistritoPorCanton(this.COD_PROVINCIA, this.COD_CANTON);
+            
+        } catch (Exception e) {
+            FacesContext context2 = FacesContext.getCurrentInstance();
+            context2.addMessage(null, new FacesMessage("Error", e.toString()));
+        }
         
-        lista = pDB.moTodo();
-        
+
         LinkedList resultList = new LinkedList();
-        resultList.add(new SelectItem(0, 
-                "Seleccione Provincia"));
-        
-        for (Iterator iter= lista.iterator();
-                iter.hasNext();) {
-        
-            Provincias pro = (Provincias) iter.next();
-            dscCortaProvincia=pro.getDsc_corta_provincia();
-            codigoProvincia=pro.getCod_provincia();
-            resultList.add(new SelectItem(codigoProvincia, 
-                    dscCortaProvincia));
-         }         
-         return resultList; 
-        
+
+        for (Distritos pro : lista) {
+            idDistrito = pro.getCOD_DISTRITO();
+            nombreDistrito = pro.getDSC_DISTRITO();
+            resultList.add(new SelectItem(idDistrito, nombreDistrito));
+        }
+        return resultList;
     }
 }

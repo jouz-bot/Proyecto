@@ -106,23 +106,21 @@
 
                             <p:outputLabel value="Provincia:"></p:outputLabel>
                             <p:selectOneMenu label="pro" value="#{beanRegistroUsuario.COD_PROVINCIA}" onchange="submit()" id="pro">
-                                <f:selectItems value="#{beanRegistroUsuario.listaPro}"></f:selectItems>
+                                <f:selectItems value="#{beanRegistroUsuario.listaProvincia}"></f:selectItems>
                             </p:selectOneMenu>
-                            
+
                             <p:outputLabel value="Cantón:"></p:outputLabel>
-                            <p:selectOneMenu label="pro" value="#{beanRegistroUsuario.COD_PROVINCIA}" onchange="submit()" id="pro">
-                                <f:selectItems value="#{beanRegistroUsuario.listaPro}"></f:selectItems>
+                            <p:selectOneMenu value="#{beanRegistroUsuario.COD_CANTON}" onchange="submit()">
+                                <f:selectItems value="#{beanRegistroUsuario.listaCantonPorProvincia}"></f:selectItems>
                             </p:selectOneMenu>
-                            
+
                             <p:outputLabel value="Distrito:"></p:outputLabel>
-                            <p:selectOneMenu label="pro" value="#{beanRegistroUsuario.COD_PROVINCIA}" onchange="submit()" id="pro">
-                                <f:selectItems value="#{beanRegistroUsuario.listaPro}"></f:selectItems>
+                            <p:selectOneMenu value="#{beanRegistroUsuario.COD_DISTRITO}" onchange="submit()">
+                                <f:selectItems value="#{beanRegistroUsuario.listaDistritoPorCanton}"></f:selectItems>
                             </p:selectOneMenu>
-                            
+
                             <p:outputLabel value="Barrio:"></p:outputLabel>
-                            <p:selectOneMenu label="pro" value="#{beanRegistroUsuario.COD_PROVINCIA}" onchange="submit()" id="pro">
-                                <f:selectItems value="#{beanRegistroUsuario.listaPro}"></f:selectItems>
-                            </p:selectOneMenu>
+
 
                             <p:outputLabel value="Otras Señas:"></p:outputLabel>
                             <p:autoComplete ></p:autoComplete>

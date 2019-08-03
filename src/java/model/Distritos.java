@@ -12,18 +12,18 @@ package model;
 public class Distritos {
 
     //Definision de variables
-    int COD_PROVINCIA;
-    int COD_CANTON;
-    int COD_DISTRITO;
+    float COD_PROVINCIA;
+    float COD_CANTON;
+    float COD_DISTRITO;
     String DSC_DISTRITO;
-    int LOG_ACTIVO;
+    float LOG_ACTIVO;
 
     //Metodo constructor
 
     public Distritos() {
     }
 
-    public Distritos(int COD_PROVINCIA, int COD_CANTON, int COD_DISTRITO, String DSC_DISTRITO, int LOG_ACTIVO) {
+    public Distritos(float COD_PROVINCIA, float COD_CANTON, float COD_DISTRITO, String DSC_DISTRITO, float LOG_ACTIVO) {
         this.COD_PROVINCIA = COD_PROVINCIA;
         this.COD_CANTON = COD_CANTON;
         this.COD_DISTRITO = COD_DISTRITO;
@@ -34,27 +34,27 @@ public class Distritos {
     
     //Metodos SET y GET
 
-    public int getCOD_PROVINCIA() {
+    public float getCOD_PROVINCIA() {
         return COD_PROVINCIA;
     }
 
-    public void setCOD_PROVINCIA(int COD_PROVINCIA) {
+    public void setCOD_PROVINCIA(float COD_PROVINCIA) {
         this.COD_PROVINCIA = COD_PROVINCIA;
     }
 
-    public int getCOD_CANTON() {
+    public float getCOD_CANTON() {
         return COD_CANTON;
     }
 
-    public void setCOD_CANTON(int COD_CANTON) {
+    public void setCOD_CANTON(float COD_CANTON) {
         this.COD_CANTON = COD_CANTON;
     }
 
-    public int getCOD_DISTRITO() {
+    public float getCOD_DISTRITO() {
         return COD_DISTRITO;
     }
 
-    public void setCOD_DISTRITO(int COD_DISTRITO) {
+    public void setCOD_DISTRITO(float COD_DISTRITO) {
         this.COD_DISTRITO = COD_DISTRITO;
     }
 
@@ -66,12 +66,14 @@ public class Distritos {
         this.DSC_DISTRITO = DSC_DISTRITO;
     }
 
-    public int getLOG_ACTIVO() {
+    public float getLOG_ACTIVO() {
         return LOG_ACTIVO;
     }
 
-    public void setLOG_ACTIVO(int LOG_ACTIVO) {
+    public void setLOG_ACTIVO(float LOG_ACTIVO) {
         this.LOG_ACTIVO = LOG_ACTIVO;
     }
+
+    
     
 }
