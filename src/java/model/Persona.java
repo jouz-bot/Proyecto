@@ -17,10 +17,10 @@ public class Persona {
     String NOMBRE_PERSONA;
     String APELLIDO1;
     String APELLIDO2;
-    int COD_PROVINCIA;
-    int COD_CANTON;
-    int COD_DISTRITO;
-    int COD_BARRIO;
+    float COD_PROVINCIA;
+    float COD_CANTON;
+    float COD_DISTRITO;
+    float COD_BARRIO;
     String OTRAS_SENAS;
     String DSC_CORREO;
     String CONTRASENA;
@@ -32,7 +32,7 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(int COD_PERSONA, int COD_TIPO_IDENTIFICACION, String NOMBRE_PERSONA, String APELLIDO1, String APELLIDO2, int COD_PROVINCIA, int COD_CANTON, int COD_DISTRITO, int COD_BARRIO, String OTRAS_SENAS, String DSC_CORREO, String CONTRASENA, int COD_DISCIPLINA_DEPORTIVA, int COD_DEPORTISTA, int COD_ROL) {
+    public Persona(int COD_PERSONA, int COD_TIPO_IDENTIFICACION, String NOMBRE_PERSONA, String APELLIDO1, String APELLIDO2, float COD_PROVINCIA, float COD_CANTON, float COD_DISTRITO, float COD_BARRIO, String OTRAS_SENAS, String DSC_CORREO, String CONTRASENA, int COD_DISCIPLINA_DEPORTIVA, int COD_DEPORTISTA, int COD_ROL) {
         this.COD_PERSONA = COD_PERSONA;
         this.COD_TIPO_IDENTIFICACION = COD_TIPO_IDENTIFICACION;
         this.NOMBRE_PERSONA = NOMBRE_PERSONA;
@@ -92,35 +92,35 @@ public class Persona {
         this.APELLIDO2 = APELLIDO2;
     }
 
-    public int getCOD_PROVINCIA() {
+    public float getCOD_PROVINCIA() {
         return COD_PROVINCIA;
     }
 
-    public void setCOD_PROVINCIA(int COD_PROVINCIA) {
+    public void setCOD_PROVINCIA(float COD_PROVINCIA) {
         this.COD_PROVINCIA = COD_PROVINCIA;
     }
 
-    public int getCOD_CANTON() {
+    public float getCOD_CANTON() {
         return COD_CANTON;
     }
 
-    public void setCOD_CANTON(int COD_CANTON) {
+    public void setCOD_CANTON(float COD_CANTON) {
         this.COD_CANTON = COD_CANTON;
     }
 
-    public int getCOD_DISTRITO() {
+    public float getCOD_DISTRITO() {
         return COD_DISTRITO;
     }
 
-    public void setCOD_DISTRITO(int COD_DISTRITO) {
+    public void setCOD_DISTRITO(float COD_DISTRITO) {
         this.COD_DISTRITO = COD_DISTRITO;
     }
 
-    public int getCOD_BARRIO() {
+    public float getCOD_BARRIO() {
         return COD_BARRIO;
     }
 
-    public void setCOD_BARRIO(int COD_BARRIO) {
+    public void setCOD_BARRIO(float COD_BARRIO) {
         this.COD_BARRIO = COD_BARRIO;
     }
 

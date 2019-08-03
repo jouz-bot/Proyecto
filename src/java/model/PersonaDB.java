@@ -42,10 +42,10 @@ public class PersonaDB {
     String NOMBRE_PERSONA = d.getNOMBRE_PERSONA();
     String APELLIDO1 = d.getAPELLIDO1();
     String APELLIDO2 = d.getAPELLIDO2();
-    int COD_PROVINCIA = d.getCOD_PROVINCIA();
-    int COD_CANTON = d.getCOD_CANTON();
-    int COD_DISTRITO = d.getCOD_DISTRITO();
-    int COD_BARRIO = d.getCOD_BARRIO();
+    float COD_PROVINCIA = d.getCOD_PROVINCIA();
+    float COD_CANTON = d.getCOD_CANTON();
+    float COD_DISTRITO = d.getCOD_DISTRITO();
+    float COD_BARRIO = d.getCOD_BARRIO();
     String OTRAS_SENAS = d.getOTRAS_SENAS();
     String DSC_CORREO = d.getDSC_CORREO();
     String CONTRASENA = d.getCONTRASENA();

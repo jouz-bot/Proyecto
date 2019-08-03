@@ -5,9 +5,9 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      import = "java.util.LinkedList">
+      import = "java.util.LinkedList" >
     <h:head>
-        <title>Reigistro de Instructores</title>
+        <title>Registro de Instructores</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
         <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css"/>
@@ -86,28 +86,43 @@
                         <h:panelGrid columns="2" cellpadding="5">
 
                             <p:outputLabel value="Tipo de Identificación:"></p:outputLabel>
-                            <p:autoComplete  dropdown="true"></p:autoComplete>
+                            <p:selectOneMenu value="#{beanRegistroUsuario.COD_TIPO_IDENTIFICACION}">
+                                <f:selectItem itemLabel="1 - Cedula" itemValue="1"></f:selectItem>
+                                <f:selectItem itemLabel="2 - Pasaporte" itemValue="2"></f:selectItem>
+                                <f:selectItem itemLabel="3 - Dimex" itemValue="3"></f:selectItem>
+                            </p:selectOneMenu>
 
                             <p:outputLabel value="Número de identificación:"></p:outputLabel>
-                            <p:autoComplete ></p:autoComplete>
+                            <p:autoComplete value="#{beanRegistroUsuario.COD_PERSONA}"></p:autoComplete>
 
                             <p:outputLabel value="Nombre:"></p:outputLabel>
-                            <p:autoComplete></p:autoComplete>
+                            <p:autoComplete value="#{beanRegistroUsuario.NOMBRE_PERSONA}"></p:autoComplete>
 
                             <p:outputLabel value="Primer Apellido:"></p:outputLabel>
-                            <p:autoComplete ></p:autoComplete>
+                            <p:autoComplete value="#{beanRegistroUsuario.APELLIDO1}"></p:autoComplete>
 
                             <p:outputLabel value="Segundo Apellido:"></p:outputLabel>
-                            <p:autoComplete ></p:autoComplete>
+                            <p:autoComplete value="#{beanRegistroUsuario.APELLIDO2}"></p:autoComplete>
 
                             <p:outputLabel value="Provincia:"></p:outputLabel>
-                            <p:autoComplete  dropdown="true" completeMethod="#{beanProvincias.listaTablaProvincia}" value="#{beanProvincias.COD_PROVINCIA}" id="pro"></p:autoComplete>
+                            <p:selectOneMenu label="pro" value="#{beanRegistroUsuario.COD_PROVINCIA}" onchange="submit()" id="pro">
+                                <f:selectItems value="#{beanRegistroUsuario.listaPro}"></f:selectItems>
+                            </p:selectOneMenu>
+                            
                             <p:outputLabel value="Cantón:"></p:outputLabel>
-                            <p:autoComplete  dropdown="true"></p:autoComplete>
+                            <p:selectOneMenu label="pro" value="#{beanRegistroUsuario.COD_PROVINCIA}" onchange="submit()" id="pro">
+                                <f:selectItems value="#{beanRegistroUsuario.listaPro}"></f:selectItems>
+                            </p:selectOneMenu>
+                            
                             <p:outputLabel value="Distrito:"></p:outputLabel>
-                            <p:autoComplete  dropdown="true"></p:autoComplete>
+                            <p:selectOneMenu label="pro" value="#{beanRegistroUsuario.COD_PROVINCIA}" onchange="submit()" id="pro">
+                                <f:selectItems value="#{beanRegistroUsuario.listaPro}"></f:selectItems>
+                            </p:selectOneMenu>
+                            
                             <p:outputLabel value="Barrio:"></p:outputLabel>
-                            <p:autoComplete  dropdown="true"></p:autoComplete>
+                            <p:selectOneMenu label="pro" value="#{beanRegistroUsuario.COD_PROVINCIA}" onchange="submit()" id="pro">
+                                <f:selectItems value="#{beanRegistroUsuario.listaPro}"></f:selectItems>
+                            </p:selectOneMenu>
 
                             <p:outputLabel value="Otras Señas:"></p:outputLabel>
                             <p:autoComplete ></p:autoComplete>

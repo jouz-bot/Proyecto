@@ -11,56 +11,50 @@ package model;
  */
 public class Provincias {
 
-    //Definicion de variables
-    double COD_PROVINCIA;
-    String DSC_CORTA_PROVINCIA;
-    String DSC_PROVINCIA;
-    double LOG_ACTIVO;
-    
-    //Metodo constructor
+    float cod_provincia;
+    String dsc_corta_provincia;
+    String dsc_provincia;
+    float log_activo;
 
-    public Provincias() {
+    public Provincias(float cod_provincia, String dsc_corta_provincia, 
+            String dsc_provincia, float log_activo) {
+        
+        this.setCod_provincia(cod_provincia);
+        this.setDsc_corta_provincia(dsc_corta_provincia);
+        this.setDsc_provincia(dsc_provincia);
+        this.setLog_activo(log_activo);
     }
 
-    public Provincias(double COD_PROVINCIA, String DSC_CORTA_PROVINCIA, String DSC_PROVINCIA, double LOG_ACTIVO) {
-        this.COD_PROVINCIA = COD_PROVINCIA;
-        this.DSC_CORTA_PROVINCIA = DSC_CORTA_PROVINCIA;
-        this.DSC_PROVINCIA = DSC_PROVINCIA;
-        this.LOG_ACTIVO = LOG_ACTIVO;
-    }
-    
-    //Metodos SET y GET
-
-    public double getCOD_PROVINCIA() {
-        return COD_PROVINCIA;
+    public float getCod_provincia() {
+        return cod_provincia;
     }
 
-    public void setCOD_PROVINCIA(double COD_PROVINCIA) {
-        this.COD_PROVINCIA = COD_PROVINCIA;
+    public void setCod_provincia(float cod_provincia) {
+        this.cod_provincia = cod_provincia;
     }
 
-    public String getDSC_CORTA_PROVINCIA() {
-        return DSC_CORTA_PROVINCIA;
+    public String getDsc_corta_provincia() {
+        return dsc_corta_provincia;
     }
 
-    public void setDSC_CORTA_PROVINCIA(String DSC_CORTA_PROVINCIA) {
-        this.DSC_CORTA_PROVINCIA = DSC_CORTA_PROVINCIA;
+    public void setDsc_corta_provincia(String dsc_corta_provincia) {
+        this.dsc_corta_provincia = dsc_corta_provincia;
     }
 
-    public String getDSC_PROVINCIA() {
-        return DSC_PROVINCIA;
+    public String getDsc_provincia() {
+        return dsc_provincia;
     }
 
-    public void setDSC_PROVINCIA(String DSC_PROVINCIA) {
-        this.DSC_PROVINCIA = DSC_PROVINCIA;
+    public void setDsc_provincia(String dsc_provincia) {
+        this.dsc_provincia = dsc_provincia;
     }
 
-    public double getLOG_ACTIVO() {
-        return LOG_ACTIVO;
+    public float getLog_activo() {
+        return log_activo;
     }
 
-    public void setLOG_ACTIVO(double LOG_ACTIVO) {
-        this.LOG_ACTIVO = LOG_ACTIVO;
+    public void setLog_activo(float log_activo) {
+        this.log_activo = log_activo;
     }
     
 }

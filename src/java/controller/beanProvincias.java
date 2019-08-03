@@ -23,100 +23,101 @@ import model.ProvinciasDB;
 @Named(value = "beanProvincias")
 @SessionScoped
 public class beanProvincias implements Serializable {
-    float COD_PROVINCIA;
-    String DSC_CORTA_PROVINCIA;
-    String DSC_PROVINCIA;
-    float LOG_ACTIVO;
+
+    float cod_provincia;
+    String dsc_corta_provincia;
+    String dsc_provincia = "Alajuela";
+    float log_activo;
     LinkedList<SelectItem> listaPro = new LinkedList<>();
     LinkedList<Provincias> listaTablaProvincia = new LinkedList<Provincias>();
 
-    public LinkedList<Provincias> getListaTablaProvincia() throws SNMPExceptions, SQLException {
-        
+    public LinkedList<Provincias> getListaTablaProvincia()
+            throws SNMPExceptions, SQLException {
+
         LinkedList<Provincias> lista = new LinkedList<Provincias>();
         ProvinciasDB pDB = new ProvinciasDB();
-        
+
         lista = pDB.moTodo();
-        
+
         LinkedList resultLista = new LinkedList();
-           
-        resultLista = lista;       
-        
-        return resultLista; 
+
+        resultLista = lista;
+        return resultLista;
+
     }
 
-    public void setListaTablaProvincia(LinkedList<Provincias> listaTablaProvincia) {
+    public void setListaTablaProvincia(LinkedList<
+            Provincias> listaTablaProvincia) {
         this.listaTablaProvincia = listaTablaProvincia;
     }
-    
+
     Provincias pro;
     ProvinciasDB proDB;
-   
-    /**
-     * Creates a new instance of beanProvincias
-     */
+
     public beanProvincias() {
     }
-    
 
-    public void setListPro(LinkedList<SelectItem>listProv) {
-        this.listaPro= listProv;
+    public void setListPro(LinkedList<SelectItem> listProv) {
+        this.listaPro = listProv;
     }
 
-    public LinkedList<SelectItem> getListaPro() throws SNMPExceptions, SQLException{
-        String dscCortaProvincia="";
-        double codigoProvincia = 0;
-        
+    public LinkedList<SelectItem> getListaPro()
+            throws SNMPExceptions, SQLException {
+        String dscCortaProvincia = "";
+        float codigoProvincia = 0;
+
         LinkedList<Provincias> lista = new LinkedList<Provincias>();
         ProvinciasDB pDB = new ProvinciasDB();
-        
+
         lista = pDB.moTodo();
-        
+
         LinkedList resultList = new LinkedList();
-        resultList.add(new SelectItem(0, "Seleccione Provincia"));
-        
+        resultList.add(new SelectItem(0,
+                "Seleccione Provincia"));
+
         for (Iterator iter = lista.iterator();
                 iter.hasNext();) {
-        
+
             Provincias pro = (Provincias) iter.next();
-            dscCortaProvincia = pro.getDSC_CORTA_PROVINCIA();
-            codigoProvincia = pro.getCOD_PROVINCIA();
-            resultList.add(new SelectItem(codigoProvincia, 
+            dscCortaProvincia = pro.getDsc_corta_provincia();
+            codigoProvincia = pro.getCod_provincia();
+            resultList.add(new SelectItem(codigoProvincia,
                     dscCortaProvincia));
-         }         
-         return resultList; 
-        
+        }
+        return resultList;
+
     }
 
-    public float getCOD_PROVINCIA() {
-        return COD_PROVINCIA;
+    public float getCod_provincia() {
+        return cod_provincia;
     }
 
-    public void setCOD_PROVINCIA(float COD_PROVINCIA) {
-        this.COD_PROVINCIA = COD_PROVINCIA;
+    public void setCod_provincia(float cod_provincia) {
+        this.cod_provincia = cod_provincia;
     }
 
-    public String getDSC_CORTA_PROVINCIA() {
-        return DSC_CORTA_PROVINCIA;
+    public String getDsc_corta_provincia() {
+        return dsc_corta_provincia;
     }
 
-    public void setDSC_CORTA_PROVINCIA(String DSC_CORTA_PROVINCIA) {
-        this.DSC_CORTA_PROVINCIA = DSC_CORTA_PROVINCIA;
+    public void setDsc_corta_provincia(String dsc_corta_provincia) {
+        this.dsc_corta_provincia = dsc_corta_provincia;
     }
 
-    public String getDSC_PROVINCIA() {
-        return DSC_PROVINCIA;
+    public String getDsc_provincia() {
+        return dsc_provincia;
     }
 
-    public void setDSC_PROVINCIA(String DSC_PROVINCIA) {
-        this.DSC_PROVINCIA = DSC_PROVINCIA;
+    public void setDsc_provincia(String dsc_provincia) {
+        this.dsc_provincia = dsc_provincia;
     }
 
-    public float getLOG_ACTIVO() {
-        return LOG_ACTIVO;
+    public float getLog_activo() {
+        return log_activo;
     }
 
-    public void setLOG_ACTIVO(float LOG_ACTIVO) {
-        this.LOG_ACTIVO = LOG_ACTIVO;
+    public void setLog_activo(float log_activo) {
+        this.log_activo = log_activo;
     }
 
     public Provincias getPro() {
@@ -135,6 +136,4 @@ public class beanProvincias implements Serializable {
         this.proDB = proDB;
     }
 
-
-    
 }

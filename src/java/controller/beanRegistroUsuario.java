@@ -10,9 +10,14 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.Iterator;
+import java.util.LinkedList;
+import javax.faces.model.SelectItem;
 import javax.naming.NamingException;
 import model.Persona;
 import model.PersonaDB;
+import model.Provincias;
+import model.ProvinciasDB;
 
 /**
  *
@@ -30,10 +35,10 @@ public class beanRegistroUsuario implements Serializable {
     String NOMBRE_PERSONA;
     String APELLIDO1;
     String APELLIDO2;
-    int COD_PROVINCIA;
-    int COD_CANTON;
-    int COD_DISTRITO;
-    int COD_BARRIO;
+    float COD_PROVINCIA;
+    float COD_CANTON;
+    float COD_DISTRITO;
+    float COD_BARRIO;
     String OTRAS_SENAS;
     String DSC_CORREO;
     String CONTRASENA;
@@ -86,7 +91,7 @@ public class beanRegistroUsuario implements Serializable {
         this.APELLIDO2 = APELLIDO2;
     }
 
-    public int getCOD_PROVINCIA() {
+    public float getCOD_PROVINCIA() {
         return COD_PROVINCIA;
     }
 
@@ -94,7 +99,7 @@ public class beanRegistroUsuario implements Serializable {
         this.COD_PROVINCIA = COD_PROVINCIA;
     }
 
-    public int getCOD_CANTON() {
+    public float getCOD_CANTON() {
         return COD_CANTON;
     }
 
@@ -102,7 +107,7 @@ public class beanRegistroUsuario implements Serializable {
         this.COD_CANTON = COD_CANTON;
     }
 
-    public int getCOD_DISTRITO() {
+    public float getCOD_DISTRITO() {
         return COD_DISTRITO;
     }
 
@@ -110,7 +115,7 @@ public class beanRegistroUsuario implements Serializable {
         this.COD_DISTRITO = COD_DISTRITO;
     }
 
-    public int getCOD_BARRIO() {
+    public float getCOD_BARRIO() {
         return COD_BARRIO;
     }
 
@@ -169,8 +174,8 @@ public class beanRegistroUsuario implements Serializable {
     public String getMensaje() {
         return mensaje;
     }
-    
-    public void limpiarCampos(){
+
+    public void limpiarCampos() {
         this.setAPELLIDO1("");
         this.setAPELLIDO2("");
         this.setCOD_BARRIO(0);
@@ -192,11 +197,11 @@ public class beanRegistroUsuario implements Serializable {
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
-    
-        public void guardarPersona() throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
+
+    public void guardarPersona() throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
         Persona vCan = new Persona();
         PersonaDB vDB = new PersonaDB();
-        
+
         vCan.setCOD_PERSONA(this.getCOD_PERSONA());
         vCan.setNOMBRE_PERSONA(this.getNOMBRE_PERSONA());
         vCan.setAPELLIDO1(this.getAPELLIDO1());
@@ -211,8 +216,71 @@ public class beanRegistroUsuario implements Serializable {
         vCan.setCONTRASENA(this.getCONTRASENA());
         vCan.setDSC_CORREO(this.getDSC_CORREO());
         vCan.setCOD_ROL(this.getCOD_ROL());
-        
+
         vDB.guardarPersona(vCan);
         this.setMensaje("Se ha guardado el usuario correctamente");
+    }
+
+    float cod_provincia;
+    String dsc_corta_provincia;
+    String dsc_provincia = "Alajuela";
+    float log_activo;
+    LinkedList<SelectItem> listaPro = new LinkedList<>();
+    LinkedList<Provincias> listaTablaProvincia = new 
+        LinkedList<Provincias>();
+
+    public LinkedList<Provincias> getListaTablaProvincia() 
+            throws SNMPExceptions, SQLException {
+        
+        LinkedList<Provincias> lista = new 
+                    LinkedList<Provincias>();
+        ProvinciasDB pDB = new ProvinciasDB();
+        
+        lista = pDB.moTodo();
+        
+        LinkedList resultLista = new LinkedList();
+           
+        resultLista=lista;       
+        return resultLista; 
+
+    }
+
+    public void setListaTablaProvincia(LinkedList<Provincias> listaTablaProvincia) {
+        this.listaTablaProvincia = listaTablaProvincia;
+    }
+    
+    Provincias pro;
+    ProvinciasDB proDB;
+
+    public void setListPro(LinkedList<SelectItem> listProv) {
+        this.listaPro= listProv;
+    }
+
+    public LinkedList<SelectItem> getListaPro() 
+            throws SNMPExceptions, SQLException{
+        String dscCortaProvincia="";
+        float codigoProvincia=0;
+        
+        LinkedList<Provincias> lista = new 
+        LinkedList<Provincias>();
+        ProvinciasDB pDB = new ProvinciasDB();
+        
+        lista = pDB.moTodo();
+        
+        LinkedList resultList = new LinkedList();
+        resultList.add(new SelectItem(0, 
+                "Seleccione Provincia"));
+        
+        for (Iterator iter= lista.iterator();
+                iter.hasNext();) {
+        
+            Provincias pro = (Provincias) iter.next();
+            dscCortaProvincia=pro.getDsc_corta_provincia();
+            codigoProvincia=pro.getCod_provincia();
+            resultList.add(new SelectItem(codigoProvincia, 
+                    dscCortaProvincia));
+         }         
+         return resultList; 
+        
     }
 }

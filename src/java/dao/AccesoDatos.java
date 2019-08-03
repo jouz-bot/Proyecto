@@ -31,7 +31,6 @@ import javax.naming.NamingException;
  * @author Jose Herrera
  */
 
-
 public class AccesoDatos implements Serializable {
    
     /*Constante que identifica el motor de la base de datos*/
@@ -104,7 +103,7 @@ public class AccesoDatos implements Serializable {
         ResultSet rs = null;
      
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        dbConn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=DBAYB", "sa", "123456");
+        dbConn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=ProyectoFinal", "sa", "123456");
         
         try{
             //Crear el statemente para la ejecucion de sentencias
@@ -446,5 +445,3 @@ public class AccesoDatos implements Serializable {
     }
 
 }
-
-
