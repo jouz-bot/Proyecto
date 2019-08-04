@@ -120,7 +120,9 @@
                             </p:selectOneMenu>
 
                             <p:outputLabel value="Barrio:"></p:outputLabel>
-
+                            <p:selectOneMenu value="#{beanRegistroUsuario.COD_BARRIO}" onchange="submit()">
+                                <f:selectItems value="#{beanRegistroUsuario.listaBarrioPorDistrito}"></f:selectItems>
+                            </p:selectOneMenu>
 
                             <p:outputLabel value="Otras Señas:"></p:outputLabel>
                             <p:autoComplete ></p:autoComplete>

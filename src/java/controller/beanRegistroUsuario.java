@@ -16,6 +16,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.naming.NamingException;
+import model.Barrio;
+import model.BarrioDB;
 import model.Cantones;
 import model.CantonesDB;
 import model.Distritos;
@@ -316,6 +318,45 @@ public class beanRegistroUsuario implements Serializable {
             idDistrito = pro.getCOD_DISTRITO();
             nombreDistrito = pro.getDSC_DISTRITO();
             resultList.add(new SelectItem(idDistrito, nombreDistrito));
+        }
+        return resultList;
+    }
+    
+    //    Cargar barrio
+    public LinkedList<SelectItem> getListaBarrioPorDistrito() throws SNMPExceptions, SQLException {
+        float idBarrio;
+        String nombreBarrio = "";
+
+        LinkedList<Barrio> lista = new LinkedList<Barrio>();
+        BarrioDB dDB = new BarrioDB();
+
+        if (this.COD_PROVINCIA == 0) {
+            return null;
+        }
+
+        if (this.COD_CANTON == 0) {
+            return null;
+        }
+        
+        if (this.COD_DISTRITO == 0) {
+            return null;
+        }
+        
+        try {
+            lista = dDB.seleccionarBarrioPorDistrito(this.COD_PROVINCIA, this.COD_CANTON, this.COD_DISTRITO);
+            
+        } catch (Exception e) {
+            FacesContext context2 = FacesContext.getCurrentInstance();
+            context2.addMessage(null, new FacesMessage("Error", e.toString()));
+        }
+        
+
+        LinkedList resultList = new LinkedList();
+
+        for (Barrio pro : lista) {
+            idBarrio = pro.getCOD_BARRIO();
+            nombreBarrio = pro.getDSC_BARRIO();
+            resultList.add(new SelectItem(idBarrio, nombreBarrio));
         }
         return resultList;
     }
