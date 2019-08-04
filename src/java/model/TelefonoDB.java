@@ -5,22 +5,48 @@
  */
 package model;
 
+import dao.AccesoDatos;
+import dao.SNMPExceptions;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import javax.naming.NamingException;
+
 /**
  *
  * @author Jose_Cespedes
  */
 public class TelefonoDB {
-        //Definicion atributo
-    Telefono telefono;
-    
-    //Metodos SET y GET
+private AccesoDatos accesoDatos = new AccesoDatos();
+    private Connection conn;  
 
-    public Telefono getTelefono() {
-        return telefono;
+    private LinkedList<Telefono> listaP = new LinkedList<Telefono>();
+    
+    public TelefonoDB (Connection conn) {
+        accesoDatos = new AccesoDatos();    
+        accesoDatos.setDbConn(conn);
+    }
+    
+        public TelefonoDB() {
+        super();
     }
 
-    public void setTelefono(Telefono telefono) {
-        this.telefono = telefono;
+    public void guardarVoto(Telefono votoC) throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
+        //Se obtienen los valores del objeto Cliente
+       Telefono d = new Telefono();
+        d = votoC;
+
+        //Datos de CLiente
+
+        String dsc_telefono = d.getDSC_TELEFONO();
+        int numPersona = d.getCOD_PERSONA();
+
+        //Se crea la sentencia de actualización
+        String insert
+                = "INSERT INTO TELEFONO(DSC_TELEFONO, COD_PERSONA) VALUES ("
+                + " '" + dsc_telefono + "', " + numPersona + ");";
+        //Se ejecuta la sentencia SQL
+        accesoDatos.ejecutaSQL(insert);
     }
     
 }

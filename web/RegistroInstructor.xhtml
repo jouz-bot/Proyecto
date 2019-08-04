@@ -125,21 +125,27 @@
                             </p:selectOneMenu>
 
                             <p:outputLabel value="Otras Señas:"></p:outputLabel>
-                            <p:autoComplete ></p:autoComplete>
-                            <p:outputLabel value="Telefono:"></p:outputLabel>
-                            <p:autoComplete ></p:autoComplete>
+                            <p:autoComplete value="#{beanRegistroUsuario.OTRAS_SENAS}"></p:autoComplete>
+
                             <p:outputLabel value="Correo:"></p:outputLabel>
-                            <p:autoComplete ></p:autoComplete>
+                            <p:autoComplete value="#{beanRegistroUsuario.DSC_CORREO}"></p:autoComplete>
                             <p:outputLabel value="Contraseña Temporal:"></p:outputLabel>
-                            <p:autoComplete ></p:autoComplete>
-                            
+                            <p:autoComplete value="#{beanRegistroUsuario.CONTRASENA}"></p:autoComplete>
+                            <p:outputLabel value="Disciplina Deportiva: "></p:outputLabel>
+                            <p:selectOneMenu value="#{beanRegistroUsuario.COD_DISCIPLINA_DEPORTIVA}">
+                                <f:selectItem itemLabel="1 - Futbol" itemValue="1"></f:selectItem>
+                                <f:selectItem itemLabel="2 - Ciclismo" itemValue="2"></f:selectItem>
+                                <f:selectItem itemLabel="3 - Atletismo" itemValue="3"></f:selectItem>
+                            </p:selectOneMenu>
+
                         </h:panelGrid>
 
-                        <p:commandButton value="Guardar"  ></p:commandButton>
+                        <p:commandButton class="button" value="Guardar" actionListener="#{beanRegistroUsuario.guardarPersona()}" ></p:commandButton>
+                        <p:commandButton class="button" value="Nuevo" actionListener="#{beanRegistroUsuario.limpiarCampos()}" ></p:commandButton>
 
 
                     </h:form>
-
+                    <h:outputLabel value="#{beanRegistroUsuario.mensaje}" ></h:outputLabel>
                 </div>
                 <div class="w3-third w3-container">
 
@@ -147,19 +153,20 @@
                         <p:growl id="msgs" showDetail="true"></p:growl>
                         <h:panelGrid columns="2" cellpadding="5">
                             <p:outputLabel value="Agregar Telefono:"></p:outputLabel>
-                            <p:autoComplete ></p:autoComplete>
-                            <p:commandButton value="Guardar"  ></p:commandButton>
+                            <p:autoComplete value="#{beanRegistroUsuario.DSC_TELEFONO}"></p:autoComplete>
+                            <p:commandButton class="button" value="Guardar" actionListener="#{beanRegistroUsuario.guardarTelefono()}" ></p:commandButton>
+                            <h:outputText value="#{beanRegistroUsuario.mensaje}"></h:outputText>
                         </h:panelGrid>
                     </h:form>
 
                     <h:form>
                         <p:growl id="msgs" showDetail="true"></p:growl>
                         <h:panelGrid columns="2" cellpadding="5">
-                            <p:outputLabel value="Disciplina deportiva:"></p:outputLabel>
+<!--                            <p:outputLabel value="Disciplina deportiva:"></p:outputLabel>
                             <p:selectOneMenu style="width: 200px">
                                 <f:selectItem></f:selectItem>
                             </p:selectOneMenu>
-                            <p:commandButton value="Guardar"  ></p:commandButton>
+                            <p:commandButton value="Guardar"  ></p:commandButton>-->
                         </h:panelGrid>
                     </h:form>
                 </div>

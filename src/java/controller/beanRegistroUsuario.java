@@ -26,6 +26,8 @@ import model.Persona;
 import model.PersonaDB;
 import model.Provincias;
 import model.ProvinciasDB;
+import model.Telefono;
+import model.TelefonoDB;
 
 /**
  *
@@ -51,12 +53,22 @@ public class beanRegistroUsuario implements Serializable {
     String DSC_CORREO;
     String CONTRASENA;
     int COD_DISCIPLINA_DEPORTIVA;
-    int COD_DEPORTISTA;
-    int COD_ROL;
+    final int COD_DEPORTISTA = 0;
+    final int COD_ROL =2;
+    
+    String DSC_TELEFONO;
     
     String mensaje = "";
     
     public beanRegistroUsuario() {
+    }
+
+    public String getDSC_TELEFONO() {
+        return DSC_TELEFONO;
+    }
+
+    public void setDSC_TELEFONO(String DSC_TELEFONO) {
+        this.DSC_TELEFONO = DSC_TELEFONO;
     }
 
     public int getCOD_PERSONA() {
@@ -167,16 +179,8 @@ public class beanRegistroUsuario implements Serializable {
         return COD_DEPORTISTA;
     }
 
-    public void setCOD_DEPORTISTA(int COD_DEPORTISTA) {
-        this.COD_DEPORTISTA = COD_DEPORTISTA;
-    }
-
     public int getCOD_ROL() {
         return COD_ROL;
-    }
-
-    public void setCOD_ROL(int COD_ROL) {
-        this.COD_ROL = COD_ROL;
     }
 
     public String getMensaje() {
@@ -188,47 +192,23 @@ public class beanRegistroUsuario implements Serializable {
         this.setAPELLIDO2("");
         this.setCOD_BARRIO(0);
         this.setCOD_CANTON(0);
-        this.setCOD_DEPORTISTA(0);
         this.setCOD_DISCIPLINA_DEPORTIVA(0);
         this.setCOD_DISTRITO(0);
         this.setCOD_PERSONA(0);
         this.setCOD_PROVINCIA(0);
-        this.setCOD_ROL(0);
         this.setCOD_TIPO_IDENTIFICACION(0);
         this.setCONTRASENA("");
         this.setDSC_CORREO("");
         this.setMensaje("");
         this.setNOMBRE_PERSONA("");
         this.setOTRAS_SENAS("");
+        this.limpiarTelefono();
     }
 
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
 
-    public void guardarPersona() throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
-        Persona vCan = new Persona();
-        PersonaDB vDB = new PersonaDB();
-
-        vCan.setCOD_PERSONA(this.getCOD_PERSONA());
-        vCan.setNOMBRE_PERSONA(this.getNOMBRE_PERSONA());
-        vCan.setAPELLIDO1(this.getAPELLIDO1());
-        vCan.setAPELLIDO2(this.getAPELLIDO2());
-        vCan.setCOD_PROVINCIA(this.getCOD_PROVINCIA());
-        vCan.setCOD_CANTON(this.getCOD_CANTON());
-        vCan.setCOD_DISTRITO(this.getCOD_DISTRITO());
-        vCan.setCOD_BARRIO(this.getCOD_BARRIO());
-        vCan.setOTRAS_SENAS(this.getOTRAS_SENAS());
-        vCan.setCOD_DEPORTISTA(this.getCOD_DEPORTISTA());
-        vCan.setCOD_DISCIPLINA_DEPORTIVA(this.getCOD_DISCIPLINA_DEPORTIVA());
-        vCan.setCONTRASENA(this.getCONTRASENA());
-        vCan.setDSC_CORREO(this.getDSC_CORREO());
-        vCan.setCOD_ROL(this.getCOD_ROL());
-
-        vDB.guardarPersona(vCan);
-        this.setMensaje("Se ha guardado el usuario correctamente");
-    }
-    
 //    Cargar provincias
         public LinkedList<SelectItem> getListaProvincia() throws SNMPExceptions, SQLException {
         float idProvincia;
@@ -360,4 +340,70 @@ public class beanRegistroUsuario implements Serializable {
         }
         return resultList;
     }
+//    Guardar instructor
+    public void guardarPersona() throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
+        Persona vCan = new Persona();
+        PersonaDB vDB = new PersonaDB();
+        
+        vCan.setCOD_PERSONA(this.getCOD_PERSONA());
+        vCan.setCOD_TIPO_IDENTIFICACION(this.getCOD_TIPO_IDENTIFICACION());
+        vCan.setNOMBRE_PERSONA(this.getNOMBRE_PERSONA());
+        vCan.setAPELLIDO1(this.getAPELLIDO1());
+        vCan.setAPELLIDO2(this.getAPELLIDO2());
+        vCan.setCOD_PROVINCIA(this.getCOD_PROVINCIA());
+        vCan.setCOD_CANTON(this.getCOD_CANTON());
+        vCan.setCOD_DISTRITO(this.getCOD_DISTRITO());
+        vCan.setCOD_BARRIO(this.getCOD_BARRIO());
+        vCan.setOTRAS_SENAS(this.getOTRAS_SENAS());
+        vCan.setDSC_CORREO(this.getDSC_CORREO());
+        vCan.setCONTRASENA(this.getCONTRASENA());
+        vCan.setCOD_DISCIPLINA_DEPORTIVA(this.getCOD_DISCIPLINA_DEPORTIVA());
+        vCan.setCOD_DEPORTISTA(this.getCOD_DEPORTISTA());
+        vCan.setCOD_ROL(this.getCOD_ROL());
+
+        try {
+
+            vDB.guardarPersona(vCan);
+            this.setMensaje("Instructor guardado exitosamente!");
+
+        } catch (Exception e) {
+            FacesContext context2 = FacesContext.getCurrentInstance();
+            context2.addMessage(null, new FacesMessage("Error", e.toString() + "Error al guardar al Instructor"));
+        }
+
+    }
+    
+//    Guardar telefono
+    public void guardarTelefono() throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
+
+        if (this.COD_PERSONA == 0) {
+            FacesContext context2 = FacesContext.getCurrentInstance();
+            context2.addMessage(null, new FacesMessage("Error", "Debe de ingresar el numero de Instructor."));
+        }
+
+        if (this.DSC_TELEFONO.equals("")) {
+            FacesContext context2 = FacesContext.getCurrentInstance();
+            context2.addMessage(null, new FacesMessage("Error", "Debe de ingresar un numero de telefono"));
+        }
+
+        try {
+            Telefono vCan = new Telefono();
+            TelefonoDB vDB = new TelefonoDB();
+
+            vCan.setDSC_TELEFONO(this.getDSC_TELEFONO());
+            vCan.setCOD_PERSONA(this.getCOD_PERSONA());
+
+            vDB.guardarVoto(vCan);
+            this.setMensaje("Telefono guardado exitosamente!");
+
+        } catch (Exception e) {
+            FacesContext context2 = FacesContext.getCurrentInstance();
+            context2.addMessage(null, new FacesMessage("Error", e.toString()));
+        }
+    }
+
+//        Limpiar telefono
+        public void limpiarTelefono(){
+            this.setDSC_TELEFONO("");
+        }
 }
