@@ -6,7 +6,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Reigistro de Actividad</title>
+        <title>Actualizar Perfil</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
         <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css"/>
@@ -78,34 +78,75 @@
 
             <div class="w3-row w3-padding-64">
                 <div class="w3-twothird w3-container">
-                    <h1 class="w3-text-teal">Registro de Actividad</h1>
+                    <h1 class="w3-text-teal">Actualizar Perfil</h1>
 
                     <!-- prime faces -->
-                    <h:form>
+                  <form class="w3-container" >
                         <p:growl id="msgs" showDetail="true"></p:growl>
 
                         <h:panelGrid columns="2" cellpadding="5">
 
-                            <p:outputLabel value="Plan de Entrenamiento:"></p:outputLabel>
+                            <p:outputLabel value="Tipo de Identificación:" ></p:outputLabel>
                             <p:selectOneMenu style="width: 200px">
                                 <f:selectItem></f:selectItem>
                             </p:selectOneMenu>
-                            <p:outputLabel value="Fecha de Actividad:"></p:outputLabel>
-                            <p:autoComplete ></p:autoComplete>
-                            <p:outputLabel value="Duración:"></p:outputLabel>
-                            <p:autoComplete ></p:autoComplete>
-                            <p:outputLabel value="Repeticiones:"></p:outputLabel>
+
+                            <p:outputLabel value="Número de identificación:"></p:outputLabel>
                             <p:autoComplete ></p:autoComplete>
 
-                           
-                            
+                            <p:outputLabel value="Nombre:"></p:outputLabel>
+                            <p:autoComplete></p:autoComplete>
+
+                            <p:outputLabel value="Primer Apellido:"></p:outputLabel>
+                            <p:autoComplete ></p:autoComplete>
+
+                            <p:outputLabel value="Segundo Apellido:"></p:outputLabel>
+                            <p:autoComplete ></p:autoComplete>
+
+                            <p:outputLabel value="Provincia:"></p:outputLabel>
+                            <p:selectOneMenu style="width: 200px">
+                                <f:selectItem></f:selectItem>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Cantón:"></p:outputLabel>
+                            <p:selectOneMenu style="width: 200px">
+                                <f:selectItem></f:selectItem>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Distrito:"></p:outputLabel>
+                            <p:selectOneMenu style="width: 200px">
+                                <f:selectItem></f:selectItem>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Barrio:"></p:outputLabel>
+                            <p:selectOneMenu style="width: 200px">
+                                <f:selectItem></f:selectItem>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Otras Señas:"></p:outputLabel>
+                            <p:autoComplete ></p:autoComplete>
+                            <p:outputLabel value="Telefono:"></p:outputLabel>
+                            <p:autoComplete ></p:autoComplete>
+                            <p:outputLabel value="Correo:"></p:outputLabel>
+                            <p:autoComplete ></p:autoComplete>
+
+                            <p:outputLabel value="Disciplina deportiva:"></p:outputLabel>
+                            <p:selectOneMenu style="width: 200px">
+                                <f:selectItem></f:selectItem>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Peso"></p:outputLabel>
+                            <p:autoComplete ></p:autoComplete>
+                            <p:outputLabel value="Talla"></p:outputLabel>
+                            <p:autoComplete ></p:autoComplete>
+                            <p:outputLabel value="Altura"></p:outputLabel>
+                            <p:autoComplete ></p:autoComplete>
+                            <p:outputLabel value="Objetivos del deporte"></p:outputLabel>
+                            <p:inputTextarea></p:inputTextarea>
+
+
                         </h:panelGrid>
-
-                        <p:commandButton value="Guardar"  ></p:commandButton>
-                        <p:commandButton value="Cancelar"  ></p:commandButton>
-
-
-                    </h:form>
+                        <center>
+                            <p:commandButton value="Guardar"  ></p:commandButton>
+                            <p:commandButton value="Cancelar" style="background-color: red" ></p:commandButton>
+                            
+                        </center>
+                    </form>
 
                 </div>
                 <div class="w3-third w3-container">
@@ -131,3 +172,4 @@
         </div>
     </h:body>
 </html>
+
