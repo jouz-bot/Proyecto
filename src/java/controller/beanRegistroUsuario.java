@@ -1,4 +1,4 @@
-    /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -20,6 +20,8 @@ import model.Barrio;
 import model.BarrioDB;
 import model.Cantones;
 import model.CantonesDB;
+import model.Deportista;
+import model.DeportistaDB;
 import model.Distritos;
 import model.DistritosDB;
 import model.Persona;
@@ -54,12 +56,16 @@ public class beanRegistroUsuario implements Serializable {
     String CONTRASENA;
     int COD_DISCIPLINA_DEPORTIVA;
     final int COD_DEPORTISTA = 0;
-    final int COD_ROL =2;
-    
+    final int COD_ROL = 2;
+    double PESO;
+    double TALLA;
+    double ALTURA;
+    String DSC_OBJETIVOS;
+
     String DSC_TELEFONO;
-    
+
     String mensaje = "";
-    
+
     public beanRegistroUsuario() {
     }
 
@@ -187,6 +193,40 @@ public class beanRegistroUsuario implements Serializable {
         return mensaje;
     }
 
+    public double getPESO() {
+        return PESO;
+    }
+
+    public void setPESO(double PESO) {
+        this.PESO = PESO;
+    }
+
+    public double getTALLA() {
+        return TALLA;
+    }
+
+    public void setTALLA(double TALLA) {
+        this.TALLA = TALLA;
+    }
+
+    public double getALTURA() {
+        return ALTURA;
+    }
+
+    public void setALTURA(double ALTURA) {
+        this.ALTURA = ALTURA;
+    }
+
+    public String getDSC_OBJETIVOS() {
+        return DSC_OBJETIVOS;
+    }
+
+    public void setDSC_OBJETIVOS(String DSC_OBJETIVOS) {
+        this.DSC_OBJETIVOS = DSC_OBJETIVOS;
+    }
+    
+    
+
     public void limpiarCampos() {
         this.setAPELLIDO1("");
         this.setAPELLIDO2("");
@@ -210,7 +250,7 @@ public class beanRegistroUsuario implements Serializable {
     }
 
 //    Cargar provincias
-        public LinkedList<SelectItem> getListaProvincia() throws SNMPExceptions, SQLException {
+    public LinkedList<SelectItem> getListaProvincia() throws SNMPExceptions, SQLException {
         float idProvincia;
         String nombreProvincia;
 
@@ -218,15 +258,14 @@ public class beanRegistroUsuario implements Serializable {
         ProvinciasDB pDB = new ProvinciasDB();
 
         try {
-             lista = pDB.moTodo();
+            lista = pDB.moTodo();
         } catch (Exception e) {
             FacesContext context2 = FacesContext.getCurrentInstance();
             context2.addMessage(null, new FacesMessage("Error", e.toString()));
         }
-       
 
         LinkedList resultList = new LinkedList();
-//        resultList.add(new SelectItem(0, "Seleccione una Provincia"));
+   //    resultList.add(new SelectItem(0, "Seleccione una Provincia"));
 
         for (Provincias pro : lista) {
             idProvincia = pro.getCod_provincia();
@@ -237,6 +276,7 @@ public class beanRegistroUsuario implements Serializable {
 
     }
 //    Cargar cantones
+
     public LinkedList<SelectItem> getListaCantonPorProvincia() throws SNMPExceptions, SQLException {
         float idCan;
         String nombreCan = "";
@@ -253,7 +293,6 @@ public class beanRegistroUsuario implements Serializable {
             FacesContext context2 = FacesContext.getCurrentInstance();
             context2.addMessage(null, new FacesMessage("Error", e.toString()));
         }
-        
 
         LinkedList resultList = new LinkedList();
 //        resultList.add(new SelectItem(0, "Seleccione un Canton"));
@@ -266,7 +305,7 @@ public class beanRegistroUsuario implements Serializable {
         return resultList;
 
     }
-    
+
 //    Cargar distritos
     public LinkedList<SelectItem> getListaDistritoPorCanton() throws SNMPExceptions, SQLException {
         float idDistrito;
@@ -282,15 +321,14 @@ public class beanRegistroUsuario implements Serializable {
         if (this.COD_CANTON == 0) {
             return null;
         }
-        
+
         try {
             lista = dDB.seleccionarDistritoPorCanton(this.COD_PROVINCIA, this.COD_CANTON);
-            
+
         } catch (Exception e) {
             FacesContext context2 = FacesContext.getCurrentInstance();
             context2.addMessage(null, new FacesMessage("Error", e.toString()));
         }
-        
 
         LinkedList resultList = new LinkedList();
 
@@ -301,7 +339,7 @@ public class beanRegistroUsuario implements Serializable {
         }
         return resultList;
     }
-    
+
     //    Cargar barrio
     public LinkedList<SelectItem> getListaBarrioPorDistrito() throws SNMPExceptions, SQLException {
         float idBarrio;
@@ -317,19 +355,18 @@ public class beanRegistroUsuario implements Serializable {
         if (this.COD_CANTON == 0) {
             return null;
         }
-        
+
         if (this.COD_DISTRITO == 0) {
             return null;
         }
-        
+
         try {
             lista = dDB.seleccionarBarrioPorDistrito(this.COD_PROVINCIA, this.COD_CANTON, this.COD_DISTRITO);
-            
+
         } catch (Exception e) {
             FacesContext context2 = FacesContext.getCurrentInstance();
             context2.addMessage(null, new FacesMessage("Error", e.toString()));
         }
-        
 
         LinkedList resultList = new LinkedList();
 
@@ -341,10 +378,11 @@ public class beanRegistroUsuario implements Serializable {
         return resultList;
     }
 //    Guardar instructor
+
     public void guardarPersona() throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
         Persona vCan = new Persona();
         PersonaDB vDB = new PersonaDB();
-        
+
         vCan.setCOD_PERSONA(this.getCOD_PERSONA());
         vCan.setCOD_TIPO_IDENTIFICACION(this.getCOD_TIPO_IDENTIFICACION());
         vCan.setNOMBRE_PERSONA(this.getNOMBRE_PERSONA());
@@ -372,7 +410,50 @@ public class beanRegistroUsuario implements Serializable {
         }
 
     }
-    
+
+    //    Guardar instructor
+    public void guardarDeportista() throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
+        Persona vPersona = new Persona();
+        PersonaDB vPersonaDB = new PersonaDB();
+        Deportista vDeportista = new Deportista();
+        DeportistaDB vDeportistaBD = new DeportistaDB();
+
+        //datos persona
+        vPersona.setCOD_PERSONA(this.getCOD_PERSONA());
+        vPersona.setCOD_TIPO_IDENTIFICACION(this.getCOD_TIPO_IDENTIFICACION());
+        vPersona.setNOMBRE_PERSONA(this.getNOMBRE_PERSONA());
+        vPersona.setAPELLIDO1(this.getAPELLIDO1());
+        vPersona.setAPELLIDO2(this.getAPELLIDO2());
+        vPersona.setCOD_PROVINCIA(this.getCOD_PROVINCIA());
+        vPersona.setCOD_CANTON(this.getCOD_CANTON());
+        vPersona.setCOD_DISTRITO(this.getCOD_DISTRITO());
+        vPersona.setCOD_BARRIO(this.getCOD_BARRIO());
+        vPersona.setOTRAS_SENAS(this.getOTRAS_SENAS());
+        vPersona.setDSC_CORREO(this.getDSC_CORREO());
+        vPersona.setCONTRASENA(this.getCONTRASENA());
+        vPersona.setCOD_DISCIPLINA_DEPORTIVA(this.getCOD_DISCIPLINA_DEPORTIVA());
+        vPersona.setCOD_DEPORTISTA(this.getCOD_DEPORTISTA());
+        vPersona.setCOD_ROL(this.getCOD_ROL());
+
+        //datos dportista
+        vDeportista.setCOD_PERSONA(vPersona.getCOD_PERSONA());
+        vDeportista.setPESO(this.getPESO());
+        vDeportista.setTALLA(this.getTALLA());
+        vDeportista.setALTURA(this.getALTURA());
+        vDeportista.setDSC_OBJETIVOS(this.getDSC_OBJETIVOS());
+
+        try {
+
+            vDeportistaBD.guardarDeportista(vPersona, vDeportista);
+            this.setMensaje("Deportista guardado exitosamente!");
+
+        } catch (Exception e) {
+            FacesContext context2 = FacesContext.getCurrentInstance();
+            context2.addMessage(null, new FacesMessage("Error", e.toString() + "Error al guardar al Instructor"));
+        }
+
+    }
+
 //    Guardar telefono
     public void guardarTelefono() throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
 
@@ -403,7 +484,7 @@ public class beanRegistroUsuario implements Serializable {
     }
 
 //        Limpiar telefono
-        public void limpiarTelefono(){
-            this.setDSC_TELEFONO("");
-        }
+    public void limpiarTelefono() {
+        this.setDSC_TELEFONO("");
+    }
 }
