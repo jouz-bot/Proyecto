@@ -243,6 +243,29 @@ public class beanRegistroUsuario implements Serializable {
         this.setNOMBRE_PERSONA("");
         this.setOTRAS_SENAS("");
         this.limpiarTelefono();
+        
+    }
+    
+    public void limpiarCamposDepo() {
+        this.setAPELLIDO1("");
+        this.setAPELLIDO2("");
+        this.setCOD_BARRIO(0);
+        this.setCOD_CANTON(0);
+        this.setCOD_DISCIPLINA_DEPORTIVA(0);
+        this.setCOD_DISTRITO(0);
+        this.setCOD_PERSONA(0);
+        this.setCOD_PROVINCIA(0);
+        this.setCOD_TIPO_IDENTIFICACION(0);
+        this.setCONTRASENA("");
+        this.setDSC_CORREO("");
+        this.setMensaje("");
+        this.setNOMBRE_PERSONA("");
+        this.setOTRAS_SENAS("");
+      
+        this.setALTURA(0);
+        this.setTALLA(0);
+        this.setPESO(0);
+        this.setDSC_OBJETIVOS("");
     }
 
     public void setMensaje(String mensaje) {
@@ -445,6 +468,7 @@ public class beanRegistroUsuario implements Serializable {
         try {
 
             vDeportistaBD.guardarDeportista(vPersona, vDeportista);
+            this.limpiarCamposDepo();
             this.setMensaje("Deportista guardado exitosamente!");
 
         } catch (Exception e) {
@@ -475,6 +499,7 @@ public class beanRegistroUsuario implements Serializable {
             vCan.setCOD_PERSONA(this.getCOD_PERSONA());
 
             vDB.guardarVoto(vCan);
+            this.limpiarTelefono();
             this.setMensaje("Telefono guardado exitosamente!");
 
         } catch (Exception e) {
