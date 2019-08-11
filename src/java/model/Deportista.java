@@ -32,6 +32,15 @@ public class Deportista {
         this.ALTURA = ALTURA;
         this.DSC_OBJETIVOS = DSC_OBJETIVOS;
     }
+
+    public Deportista(int COD_DEPORTISTA, int COD_PERSONA) {
+        this.COD_DEPORTISTA = COD_DEPORTISTA;
+        this.COD_PERSONA = COD_PERSONA;
+    }
+    
+    
+    
+    
     
     //Metodos GET y SET
 
