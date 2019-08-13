@@ -70,14 +70,14 @@ public class AsignacionDeportistaInstructorDB {
             //Se llena el arryaList con los proyectos   
             while (rsPA.next()) {
 
-                String NOMBRE_PERSONA = rsPA.getString("PERSONA.NOMBRE_PERSONA");
-                String APELLIDO1 = rsPA.getString("PERSONA.APELLIDO1");
-                int COD_DEPORTISTA = rsPA.getInt("DEPORTISTA.COD_DEPORTISTA");
-                int COD_PERSONA = rsPA.getInt("DEPORTISTA.COD_PERSONA");
-                String DSC_DISPLINA_DEPORTIVA = rsPA.getString("DISCIPLINA_DEPORTIVA.DSC_DISPLINA_DEPORTIVA");
-                String DSC_PROVINCIA = rsPA.getString("PROVINCIAS.DSC_PROVINCIA");
-                String DSC_CANTON = rsPA.getString("CANTONES.DSC_CANTON");
-                String DSC_DISTRITO = rsPA.getString("DISTRITOS.DSC_DISTRITO");
+                String NOMBRE_PERSONA = rsPA.getString("NOMBRE_PERSONA");
+                String APELLIDO1 = rsPA.getString("APELLIDO1");
+                int COD_DEPORTISTA = rsPA.getInt("COD_DEPORTISTA");
+                int COD_PERSONA = rsPA.getInt("COD_PERSONA");
+                String DSC_DISPLINA_DEPORTIVA = rsPA.getString("DSC_DISPLINA_DEPORTIVA");
+                String DSC_PROVINCIA = rsPA.getString("DSC_PROVINCIA");
+                String DSC_CANTON = rsPA.getString("DSC_CANTON");
+                String DSC_DISTRITO = rsPA.getString("DSC_DISTRITO");
 
                 vistaDeportista pDeportista = new vistaDeportista(NOMBRE_PERSONA, APELLIDO1, COD_DEPORTISTA, COD_PERSONA,
                         DSC_DISPLINA_DEPORTIVA, DSC_PROVINCIA, DSC_CANTON, DSC_DISTRITO);

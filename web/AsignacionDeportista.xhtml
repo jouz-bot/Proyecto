@@ -83,29 +83,29 @@
 
                         <h:panelGrid columns="2" cellpadding="5">
 
-                            <p:dataTable var="car">
+                            <p:dataTable value="#{beanAsignacionDeportistaInstructor.listaTablaVistaDepo}" var="asi">
                                 <p:column headerText="Nombre">
 
-                                    <h:outputText></h:outputText>
+                                    <h:outputText value="#{asi.NOMBRE_PERSONA}"></h:outputText>
                                 </p:column>
                                 <p:column headerText="Apellido">
 
-                                    <h:outputText></h:outputText>
+                                    <h:outputText value="#{asi.APELLIDO1}"></h:outputText>
                                 </p:column>
 
                                 <p:column headerText="Disciplina Deportiva">
-                                    <h:outputText></h:outputText>
+                                    <h:outputText value="#{asi.DSC_DISPLINA_DEPORTIVA}"></h:outputText>
                                 </p:column>
 
                                 <p:column headerText="Provincia">
-                                    <h:outputText></h:outputText>
+                                    <h:outputText value="#{asi.DCS_PROVINCIA}"></h:outputText>
                                 </p:column>
 
                                 <p:column headerText="Cantón">
-                                    <h:outputText></h:outputText>
+                                    <h:outputText value="#{asi.DSC_CANTON}"></h:outputText>
                                 </p:column>
                                 <p:column headerText="Distrito">
-                                    <h:outputText></h:outputText>
+                                    <h:outputText value="#{asi.DSC_DISTRITO}"></h:outputText>
                                 </p:column>
                             </p:dataTable>
 

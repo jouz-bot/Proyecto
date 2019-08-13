@@ -5,11 +5,15 @@
  */
 package controller;
 
+import dao.SNMPExceptions;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.sql.SQLException;
+import java.util.LinkedList;
 import model.AsignacionDeportistaInstructor;
 import model.AsignacionDeportistaInstructorDB;
+import model.vistaDeportista;
 
 /**
  *
@@ -22,6 +26,8 @@ public class beanAsignacionDeportistaInstructor implements Serializable {
     private int COD_ASIGNACION_DEPORTISTA_INSTRUCTOR = 0;
     private int COD_PERSONA = 0;
     private int COD_DEPORTISTA = 0;
+        //para llenar una tabla
+    LinkedList<vistaDeportista> listaTablaVistaDepo = new LinkedList<vistaDeportista>();
     
     private AsignacionDeportistaInstructor asignacionDeportistaInstructor;
     private AsignacionDeportistaInstructorDB asignacionDeportistaInstructorDB = new AsignacionDeportistaInstructorDB();
@@ -33,6 +39,24 @@ public class beanAsignacionDeportistaInstructor implements Serializable {
     }
     
     //Metodos SET y GET
+
+    public LinkedList<vistaDeportista> getListaTablaVistaDepo() throws SNMPExceptions, SQLException {
+               LinkedList<vistaDeportista> lista = new LinkedList<vistaDeportista>();
+        AsignacionDeportistaInstructorDB pDB = new AsignacionDeportistaInstructorDB();
+
+        lista = pDB.tablaAsigDeportista();
+
+        LinkedList resultLista = new LinkedList();
+
+        resultLista = lista;
+        return resultLista;
+    }
+
+    public void setListaTablaVistaDepo(LinkedList<vistaDeportista> listaTablaVistaDepo) {
+        this.listaTablaVistaDepo = listaTablaVistaDepo;
+    }
+    
+    
 
     public int getCOD_ASIGNACION_DEPORTISTA_INSTRUCTOR() {
         return COD_ASIGNACION_DEPORTISTA_INSTRUCTOR;
