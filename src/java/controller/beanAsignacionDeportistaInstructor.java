@@ -22,26 +22,27 @@ import model.vistaDeportista;
 @Named(value = "beanAsignacionDeportistaInstructor")
 @SessionScoped
 public class beanAsignacionDeportistaInstructor implements Serializable {
+
     //Asignacion de variables
     private int COD_ASIGNACION_DEPORTISTA_INSTRUCTOR = 0;
     private int COD_PERSONA = 0;
     private int COD_DEPORTISTA = 0;
-        //para llenar una tabla
+    //para llenar una tabla
     LinkedList<vistaDeportista> listaTablaVistaDepo = new LinkedList<vistaDeportista>();
-    
+    LinkedList<vistaDeportista> listaTablaVistaInstru = new LinkedList<vistaDeportista>();
+
     private AsignacionDeportistaInstructor asignacionDeportistaInstructor;
     private AsignacionDeportistaInstructorDB asignacionDeportistaInstructorDB = new AsignacionDeportistaInstructorDB();
-    
+
     /**
      * Creates a new instance of beanAsignacionDeportistaInstructor
      */
     public beanAsignacionDeportistaInstructor() {
     }
-    
-    //Metodos SET y GET
 
+    //Metodos SET y GET
     public LinkedList<vistaDeportista> getListaTablaVistaDepo() throws SNMPExceptions, SQLException {
-               LinkedList<vistaDeportista> lista = new LinkedList<vistaDeportista>();
+        LinkedList<vistaDeportista> lista = new LinkedList<vistaDeportista>();
         AsignacionDeportistaInstructorDB pDB = new AsignacionDeportistaInstructorDB();
 
         lista = pDB.tablaAsigDeportista();
@@ -52,11 +53,25 @@ public class beanAsignacionDeportistaInstructor implements Serializable {
         return resultLista;
     }
 
+    public LinkedList<vistaDeportista> getListaTablaVistaInstru() throws SNMPExceptions, SQLException {
+        LinkedList<vistaDeportista> lista = new LinkedList<vistaDeportista>();
+        AsignacionDeportistaInstructorDB pDB = new AsignacionDeportistaInstructorDB();
+
+        lista = pDB.tablaAsigInstructor();
+
+        LinkedList resultLista = new LinkedList();
+
+        resultLista = lista;
+        return resultLista;
+    }
+
     public void setListaTablaVistaDepo(LinkedList<vistaDeportista> listaTablaVistaDepo) {
         this.listaTablaVistaDepo = listaTablaVistaDepo;
     }
-    
-    
+
+    public void setListaTablaVistaInstru(LinkedList<vistaDeportista> listaTablaVistaInstru) {
+        this.listaTablaVistaInstru = listaTablaVistaInstru;
+    }
 
     public int getCOD_ASIGNACION_DEPORTISTA_INSTRUCTOR() {
         return COD_ASIGNACION_DEPORTISTA_INSTRUCTOR;
@@ -97,5 +112,5 @@ public class beanAsignacionDeportistaInstructor implements Serializable {
     public void setAsignacionDeportistaInstructorDB(AsignacionDeportistaInstructorDB asignacionDeportistaInstructorDB) {
         this.asignacionDeportistaInstructorDB = asignacionDeportistaInstructorDB;
     }
-    
+
 }
