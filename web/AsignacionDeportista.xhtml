@@ -83,7 +83,7 @@
 
                         <h:panelGrid columns="2" cellpadding="5">
 
-                            <p:dataTable value="#{beanAsignacionDeportistaInstructor.listaTablaVistaDepo}" selectionMode="single" rowKey="#{asi.COD_DEPORTISTA}" var="asi">
+                            <p:dataTable value="#{beanAsignacionDeportistaInstructor.listaTablaVistaDepo}"  var="asi">
                                 <p:column headerText="Nombre">
 
                                     <h:outputText  value="#{asi.NOMBRE_PERSONA}"></h:outputText>
@@ -107,11 +107,14 @@
                                 <p:column headerText="Distrito">
                                     <h:outputText value="#{asi.DSC_DISTRITO}"></h:outputText>
                                 </p:column>
+                                <p:column headerText="Filtrar">
+                                    <p:commandLink value="Filtrar" actionListener="#{beanAsignacionDeportistaInstructor.ListaFiltroTablaVistaInstr(asi.DCS_PROVINCIA,asi.DSC_CANTON)}"></p:commandLink>
+                                </p:column>
                             </p:dataTable>
 
                             <p:commandButton value="Filtrar"  ></p:commandButton>
-                            
-                            <p:dataTable value="#{beanAsignacionDeportistaInstructor.listaTablaVistaInstru}" selectionMode="single" rowKey="#{ins.COD_PERSONA}" var="ins">
+
+                            <p:dataTable value="#{beanAsignacionDeportistaInstructor.listaFiltroTablaVistaInstru}" selectionMode="single" rowKey="#{ins.COD_PERSONA}" var="ins">
                                 <p:column headerText="Nombre">
 
                                     <h:outputText value="#{ins.NOMBRE_PERSONA}"></h:outputText>
@@ -122,7 +125,7 @@
                                 </p:column>
 
                                 <p:column headerText="Disciplina Deportiva">
-                                    <h:outputText></h:outputText>
+                                    <h:outputText value="#{ins.DSC_DISPLINA_DEPORTIVA}"></h:outputText>
                                 </p:column>
 
                                 <p:column headerText="Provincia">
@@ -138,7 +141,7 @@
                             </p:dataTable>
 
                             <p:commandButton value="Filtrar"  ></p:commandButton>
-                           
+
 
                         </h:panelGrid>
 

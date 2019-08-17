@@ -30,6 +30,7 @@ public class beanAsignacionDeportistaInstructor implements Serializable {
     //para llenar una tabla
     LinkedList<vistaDeportista> listaTablaVistaDepo = new LinkedList<vistaDeportista>();
     LinkedList<vistaDeportista> listaTablaVistaInstru = new LinkedList<vistaDeportista>();
+    LinkedList<vistaDeportista> listaFiltroTablaVistaInstru = new LinkedList<vistaDeportista>();
 
     private AsignacionDeportistaInstructor asignacionDeportistaInstructor;
     private AsignacionDeportistaInstructorDB asignacionDeportistaInstructorDB = new AsignacionDeportistaInstructorDB();
@@ -64,6 +65,33 @@ public class beanAsignacionDeportistaInstructor implements Serializable {
         resultLista = lista;
         return resultLista;
     }
+
+    public void ListaFiltroTablaVistaInstr(String prov, String can) throws SNMPExceptions, SQLException{
+//           LinkedList<vistaDeportista> lista = new LinkedList<vistaDeportista>();
+        AsignacionDeportistaInstructorDB pDB = new AsignacionDeportistaInstructorDB();
+
+//        lista = pDB.tablaFiltroAsigInstructor(prov, can);
+        
+        this.setListaFiltroTablaVistaInstru(pDB.tablaFiltroAsigInstructor(prov, can));
+//        this.listaFiltroTablaVistaInstru=lista;
+//
+//        LinkedList resultLista = new LinkedList();
+//
+//        resultLista = lista;
+        
+    }
+
+    public LinkedList<vistaDeportista> getListaFiltroTablaVistaInstru() {
+        return listaFiltroTablaVistaInstru;
+    }
+    
+    
+
+    public void setListaFiltroTablaVistaInstru(LinkedList<vistaDeportista> listaFiltroTablaVistaInstru) {
+        this.listaFiltroTablaVistaInstru = listaFiltroTablaVistaInstru;
+    }
+    
+    
 
     public void setListaTablaVistaDepo(LinkedList<vistaDeportista> listaTablaVistaDepo) {
         this.listaTablaVistaDepo = listaTablaVistaDepo;
