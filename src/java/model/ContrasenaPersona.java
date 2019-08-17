@@ -14,19 +14,18 @@ import java.util.Date;
 public class ContrasenaPersona {
 
     //Definicion de variables
-    private int COD_CONTRESANA;
-    private int COD_PERSONA;
-    private String DSC_CONTRESANA;
-    private Date FECHA;
-    private int ACTIVO;
+
+    int COD_PERSONA;
+    String DSC_CONTRESANA;
+    Date FECHA;
+    int ACTIVO;
     
     //Metodo constructor
 
     public ContrasenaPersona() {
     }
 
-    public ContrasenaPersona(int COD_CONTRESANA, int COD_PERSONA, String DSC_CONTRESANA, Date FECHA, int ACTIVO) {
-        this.COD_CONTRESANA = COD_CONTRESANA;
+    public ContrasenaPersona(int COD_PERSONA, String DSC_CONTRESANA, Date FECHA, int ACTIVO) {
         this.COD_PERSONA = COD_PERSONA;
         this.DSC_CONTRESANA = DSC_CONTRESANA;
         this.FECHA = FECHA;
@@ -34,14 +33,6 @@ public class ContrasenaPersona {
     }
 
     //Metodos SET y GET
-
-    public int getCOD_CONTRESANA() {
-        return COD_CONTRESANA;
-    }
-
-    public void setCOD_CONTRESANA(int COD_CONTRESANA) {
-        this.COD_CONTRESANA = COD_CONTRESANA;
-    }
 
     public int getCOD_PERSONA() {
         return COD_PERSONA;
@@ -74,5 +65,5 @@ public class ContrasenaPersona {
     public void setACTIVO(int ACTIVO) {
         this.ACTIVO = ACTIVO;
     }
-    
+ 
 }
