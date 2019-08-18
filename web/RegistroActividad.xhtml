@@ -82,27 +82,27 @@
 
                     <!-- prime faces -->
                     <h:form>
-                        <p:growl id="msgs" showDetail="true"></p:growl>
+                        
 
                         <h:panelGrid columns="2" cellpadding="5">
 
-                            <p:outputLabel value="Plan de Entrenamiento:"></p:outputLabel>
-                            <p:selectOneMenu style="width: 200px">
+                            <h:outputLabel value="Plan de Entrenamiento:"></h:outputLabel>
+                            <h:selectOneMenu style="width: 200px">
                                 <f:selectItem></f:selectItem>
-                            </p:selectOneMenu>
-                            <p:outputLabel value="Fecha de Actividad:"></p:outputLabel>
-                            <p:autoComplete ></p:autoComplete>
-                            <p:outputLabel value="Duración:"></p:outputLabel>
-                            <p:autoComplete ></p:autoComplete>
-                            <p:outputLabel value="Repeticiones:"></p:outputLabel>
-                            <p:autoComplete ></p:autoComplete>
+                            </h:selectOneMenu>
+                            <h:outputLabel value="Fecha de Actividad:"></h:outputLabel>
+                            <h:inputText></h:inputText>
+                            <h:outputLabel value="Duración:"></h:outputLabel>
+                            <h:inputText></h:inputText>
+                            <h:outputLabel value="Repeticiones:"></h:outputLabel>
+                            <h:inputText></h:inputText>
 
                            
                             
                         </h:panelGrid>
 
-                        <p:commandButton value="Guardar"  ></p:commandButton>
-                        <p:commandButton value="Cancelar"  ></p:commandButton>
+                        <h:commandButton value="Guardar"  ></h:commandButton>
+                        <h:commandButton value="Cancelar"  ></h:commandButton>
 
 
                     </h:form>

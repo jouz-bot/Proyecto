@@ -459,7 +459,7 @@ public class beanRegistroUsuario implements Serializable {
                 vCan.setCONTRASENA(this.getCONTRASENA());
                 vCan.setCOD_DISCIPLINA_DEPORTIVA(this.getCOD_DISCIPLINA_DEPORTIVA());
                 vCan.setCOD_DEPORTISTA(this.getCOD_DEPORTISTA());
-                vCan.setCOD_ROL(this.getCOD_ROL());
+                vCan.setCOD_ROL(2);
 
                 vDB.guardarPersona(vCan);
                 this.setMensaje("Instructor guardado exitosamente!");
@@ -521,7 +521,7 @@ public class beanRegistroUsuario implements Serializable {
             vPersona.setCONTRASENA(this.getCONTRASENA());
             vPersona.setCOD_DISCIPLINA_DEPORTIVA(this.getCOD_DISCIPLINA_DEPORTIVA());
             vPersona.setCOD_DEPORTISTA(this.getCOD_DEPORTISTA());
-            vPersona.setCOD_ROL(this.getCOD_ROL());
+            vPersona.setCOD_ROL(3);
 
             //datos dportista
             vDeportista.setCOD_PERSONA(vPersona.getCOD_PERSONA());

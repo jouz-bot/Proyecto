@@ -5,22 +5,30 @@
  */
 package model;
 
+import dao.AccesoDatos;
+import java.sql.Connection;
+import java.util.LinkedList;
+
 /**
  *
  * @author Jose_Cespedes
  */
 public class PlanEntrenamientoDB {
-        //Definicion atributo
-    PlanEntrenamiento planEntrenamiento;
+  
+     private AccesoDatos accesoDatos = new AccesoDatos();
+    private Connection conn;
+
+    private LinkedList<AsignacionDeportistaInstructor> listaP = new LinkedList<AsignacionDeportistaInstructor>();
+
+    public PlanEntrenamientoDB(Connection conn) {
+        accesoDatos = new AccesoDatos();
+        accesoDatos.setDbConn(conn);
+    }
+
+    public PlanEntrenamientoDB() {
+        super();
+    }
     
-    //Metodos SET y GET
-
-    public PlanEntrenamiento getPlanEntrenamiento() {
-        return planEntrenamiento;
-    }
-
-    public void setPlanEntrenamiento(PlanEntrenamiento planEntrenamiento) {
-        this.planEntrenamiento = planEntrenamiento;
-    }
+    
     
 }

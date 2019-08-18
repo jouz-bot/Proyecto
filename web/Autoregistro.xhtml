@@ -80,75 +80,75 @@
 
                     <!-- prime faces -->
                     <h:form>
-                        <p:growl id="msgs" showDetail="true"></p:growl>
+                        
 
                         <h:panelGrid columns="2" cellpadding="5">
 
-                            <p:outputLabel value="Tipo de Identificación:"></p:outputLabel>
-                            <p:selectOneMenu value="#{beanRegistroUsuario.COD_TIPO_IDENTIFICACION}">
+                            <h:outputLabel value="Tipo de Identificación:"></h:outputLabel>
+                            <h:selectOneMenu value="#{beanRegistroUsuario.COD_TIPO_IDENTIFICACION}">
                                 <f:selectItem itemLabel="1 - Cedula" itemValue="1"></f:selectItem>
                                 <f:selectItem itemLabel="2 - Pasaporte" itemValue="2"></f:selectItem>
                                 <f:selectItem itemLabel="3 - Dimex" itemValue="3"></f:selectItem>
-                            </p:selectOneMenu>
+                            </h:selectOneMenu>
 
-                            <p:outputLabel value="Número de identificación:"></p:outputLabel>
-                            <p:autoComplete value="#{beanRegistroUsuario.COD_PERSONA}"></p:autoComplete>
+                            <h:outputLabel value="Número de identificación:"></h:outputLabel>
+                            <h:inputText value="#{beanRegistroUsuario.COD_PERSONA}"></h:inputText>
 
-                            <p:outputLabel value="Nombre:"></p:outputLabel>
-                            <p:autoComplete value="#{beanRegistroUsuario.NOMBRE_PERSONA}"></p:autoComplete>
+                            <h:outputLabel value="Nombre:"></h:outputLabel>
+                            <h:inputText value="#{beanRegistroUsuario.NOMBRE_PERSONA}"></h:inputText>
 
-                            <p:outputLabel value="Primer Apellido:"></p:outputLabel>
-                            <p:autoComplete value="#{beanRegistroUsuario.APELLIDO1}"></p:autoComplete>
+                            <h:outputLabel value="Primer Apellido:"></h:outputLabel>
+                            <h:inputText value="#{beanRegistroUsuario.APELLIDO1}"></h:inputText>
 
-                            <p:outputLabel value="Segundo Apellido:"></p:outputLabel>
-                            <p:autoComplete value="#{beanRegistroUsuario.APELLIDO2}"></p:autoComplete>
+                            <h:outputLabel value="Segundo Apellido:"></h:outputLabel>
+                            <h:inputText value="#{beanRegistroUsuario.APELLIDO2}"></h:inputText>
 
-                            <p:outputLabel value="Provincia:"></p:outputLabel>
-                            <p:selectOneMenu label="pro" value="#{beanRegistroUsuario.COD_PROVINCIA}" onchange="submit()" id="pro">
+                            <h:outputLabel value="Provincia:"></h:outputLabel>
+                            <h:selectOneMenu label="pro" value="#{beanRegistroUsuario.COD_PROVINCIA}" onchange="submit()" id="pro">
                                 <f:selectItems value="#{beanRegistroUsuario.listaProvincia}"></f:selectItems>
-                            </p:selectOneMenu>
+                            </h:selectOneMenu>
 
-                            <p:outputLabel value="Cantón:"></p:outputLabel>
-                            <p:selectOneMenu value="#{beanRegistroUsuario.COD_CANTON}" onchange="submit()">
+                            <h:outputLabel value="Cantón:"></h:outputLabel>
+                            <h:selectOneMenu value="#{beanRegistroUsuario.COD_CANTON}" onchange="submit()">
                                 <f:selectItems value="#{beanRegistroUsuario.listaCantonPorProvincia}"></f:selectItems>
-                            </p:selectOneMenu>
+                            </h:selectOneMenu>
 
-                            <p:outputLabel value="Distrito:"></p:outputLabel>
-                            <p:selectOneMenu value="#{beanRegistroUsuario.COD_DISTRITO}" onchange="submit()">
+                            <h:outputLabel value="Distrito:"></h:outputLabel>
+                            <h:selectOneMenu value="#{beanRegistroUsuario.COD_DISTRITO}" onchange="submit()">
                                 <f:selectItems value="#{beanRegistroUsuario.listaDistritoPorCanton}"></f:selectItems>
-                            </p:selectOneMenu>
+                            </h:selectOneMenu>
 
-                            <p:outputLabel value="Barrio:"></p:outputLabel>
-                            <p:selectOneMenu value="#{beanRegistroUsuario.COD_BARRIO}" onchange="submit()">
+                            <h:outputLabel value="Barrio:"></h:outputLabel>
+                            <h:selectOneMenu value="#{beanRegistroUsuario.COD_BARRIO}" onchange="submit()">
                                 <f:selectItems value="#{beanRegistroUsuario.listaBarrioPorDistrito}"></f:selectItems>
-                            </p:selectOneMenu>
+                            </h:selectOneMenu>
 
-                            <p:outputLabel value="Otras Señas:"></p:outputLabel>
-                            <p:autoComplete value="#{beanRegistroUsuario.OTRAS_SENAS}"></p:autoComplete>
+                            <h:outputLabel value="Otras Señas:"></h:outputLabel>
+                            <h:inputText value="#{beanRegistroUsuario.OTRAS_SENAS}"></h:inputText>
 
-                            <p:outputLabel value="Correo:"></p:outputLabel>
-                            <p:autoComplete value="#{beanRegistroUsuario.DSC_CORREO}"></p:autoComplete>
-                            <p:outputLabel value="Contraseña Temporal:"></p:outputLabel>
-                            <p:autoComplete value="#{beanRegistroUsuario.CONTRASENA}"></p:autoComplete>
-                            <p:outputLabel value="Disciplina Deportiva: "></p:outputLabel>
-                            <p:selectOneMenu value="#{beanRegistroUsuario.COD_DISCIPLINA_DEPORTIVA}">
+                            <h:outputLabel value="Correo:"></h:outputLabel>
+                            <h:inputText value="#{beanRegistroUsuario.DSC_CORREO}"></h:inputText>
+                            <h:outputLabel value="Contraseña Temporal:"></h:outputLabel>
+                            <p:inputText value="#{beanRegistroUsuario.CONTRASENA}"></p:inputText>
+                            <h:outputLabel value="Disciplina Deportiva: "></h:outputLabel>
+                            <h:selectOneMenu value="#{beanRegistroUsuario.COD_DISCIPLINA_DEPORTIVA}">
                                 <f:selectItem itemLabel="1 - Futbol" itemValue="1"></f:selectItem>
                                 <f:selectItem itemLabel="2 - Ciclismo" itemValue="2"></f:selectItem>
                                 <f:selectItem itemLabel="3 - Atletismo" itemValue="3"></f:selectItem>
-                            </p:selectOneMenu>
-                            <p:outputLabel value="Peso:"></p:outputLabel>
-                            <p:autoComplete value="#{beanRegistroUsuario.PESO}"></p:autoComplete>
-                            <p:outputLabel value="Talla:"></p:outputLabel>
-                            <p:autoComplete value="#{beanRegistroUsuario.TALLA}"></p:autoComplete>
-                            <p:outputLabel value="Altura:"></p:outputLabel>
-                            <p:autoComplete value="#{beanRegistroUsuario.ALTURA}"></p:autoComplete>
-                            <p:outputLabel value="Objetivos deportivos:"></p:outputLabel>
-                            <p:inputTextarea value="#{beanRegistroUsuario.DSC_OBJETIVOS}"></p:inputTextarea>
+                            </h:selectOneMenu>
+                            <h:outputLabel value="Peso:"></h:outputLabel>
+                            <h:inputText value="#{beanRegistroUsuario.PESO}"></h:inputText>
+                            <h:outputLabel value="Talla:"></h:outputLabel>
+                            <h:inputText value="#{beanRegistroUsuario.TALLA}"></h:inputText>
+                            <h:outputLabel value="Altura:"></h:outputLabel>
+                            <h:inputText value="#{beanRegistroUsuario.ALTURA}"></h:inputText>
+                            <h:outputLabel value="Objetivos deportivos:"></h:outputLabel>
+                            <h:inputText value="#{beanRegistroUsuario.DSC_OBJETIVOS}"></h:inputText>
 
                         </h:panelGrid>
 
-                        <p:commandButton class="button" value="Guardar" actionListener="#{beanRegistroUsuario.guardarDeportista()}" ></p:commandButton>
-                        <p:commandButton class="button" value="Nuevo" actionListener="#{beanRegistroUsuario.limpiarCampos()}" ></p:commandButton>
+                        <h:commandButton class="button" value="Guardar" actionListener="#{beanRegistroUsuario.guardarDeportista()}" ></h:commandButton>
+                        <h:commandButton class="button" value="Nuevo" actionListener="#{beanRegistroUsuario.limpiarCampos()}" ></h:commandButton>
 
 
                     </h:form>
@@ -157,11 +157,11 @@
                 <div class="w3-third w3-container">
 
                     <h:form>
-                        <p:growl id="msgs" showDetail="true"></p:growl>
+                        
                         <h:panelGrid columns="2" cellpadding="5">
-                            <p:outputLabel value="Agregar Telefono:"></p:outputLabel>
-                            <p:autoComplete value="#{beanRegistroUsuario.DSC_TELEFONO}"></p:autoComplete>
-                            <p:commandButton class="button" value="Guardar" actionListener="#{beanRegistroUsuario.guardarTelefono()}" ></p:commandButton>
+                            <h:outputLabel value="Agregar Telefono:"></h:outputLabel>
+                            <h:inputText value="#{beanRegistroUsuario.DSC_TELEFONO}"></h:inputText>
+                            <h:commandButton class="button" value="Guardar" actionListener="#{beanRegistroUsuario.guardarTelefono()}" ></h:commandButton>
                             <h:outputText value="#{beanRegistroUsuario.mensaje}"></h:outputText>
                         </h:panelGrid>
                     </h:form>
