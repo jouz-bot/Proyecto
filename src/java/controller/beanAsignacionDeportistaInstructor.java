@@ -11,6 +11,9 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.LinkedList;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.naming.NamingException;
 import model.AsignacionDeportistaInstructor;
 import model.AsignacionDeportistaInstructorDB;
 import model.vistaDeportista;
@@ -24,9 +27,10 @@ import model.vistaDeportista;
 public class beanAsignacionDeportistaInstructor implements Serializable {
 
     //Asignacion de variables
-    private int COD_ASIGNACION_DEPORTISTA_INSTRUCTOR = 0;
-    private int COD_PERSONA = 0;
-    private int COD_DEPORTISTA = 0;
+    private int COD_ASIGNACION_DEPORTISTA_INSTRUCTOR;
+    private int COD_PERSONA;
+    private int COD_DEPORTISTA;
+    private String mensaje;
     //para llenar una tabla
     LinkedList<vistaDeportista> listaTablaVistaDepo = new LinkedList<vistaDeportista>();
     LinkedList<vistaDeportista> listaTablaVistaInstru = new LinkedList<vistaDeportista>();
@@ -39,6 +43,27 @@ public class beanAsignacionDeportistaInstructor implements Serializable {
      * Creates a new instance of beanAsignacionDeportistaInstructor
      */
     public beanAsignacionDeportistaInstructor() {
+    }
+    
+    
+        public void guardarAsignacion(int codIns) throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
+        AsignacionDeportistaInstructor vAsig = new AsignacionDeportistaInstructor();
+        AsignacionDeportistaInstructorDB vDB = new AsignacionDeportistaInstructorDB();
+
+        vAsig.setCOD_PERSONA(codIns);
+        vAsig.setCOD_DEPORTISTA(this.getCOD_DEPORTISTA());
+        
+
+        try {
+
+            vDB.guardarDeportista(vAsig);
+            this.setMensaje("Instructor asignado exitosamente!");
+
+        } catch (Exception e) {
+            FacesContext context2 = FacesContext.getCurrentInstance();
+            context2.addMessage(null, new FacesMessage("Error", e.toString() + "Error al guardar al Instructor"));
+        }
+
     }
 
     //Metodos SET y GET
@@ -84,6 +109,8 @@ public class beanAsignacionDeportistaInstructor implements Serializable {
     public LinkedList<vistaDeportista> getListaFiltroTablaVistaInstru() {
         return listaFiltroTablaVistaInstru;
     }
+
+
     
     
 
@@ -140,5 +167,15 @@ public class beanAsignacionDeportistaInstructor implements Serializable {
     public void setAsignacionDeportistaInstructorDB(AsignacionDeportistaInstructorDB asignacionDeportistaInstructorDB) {
         this.asignacionDeportistaInstructorDB = asignacionDeportistaInstructorDB;
     }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+    
+    
 
 }

@@ -6,7 +6,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Reigistro de Actividad</title>
+        <title>Asignar Instructor</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
         <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css"/>
@@ -82,6 +82,7 @@
                         <p:growl id="msgs" showDetail="true"></p:growl>
 
                         <h:panelGrid columns="2" cellpadding="5">
+                            <h3 class="w3-text-teal">Tabla Deportistas</h3>
 
                             <p:dataTable value="#{beanAsignacionDeportistaInstructor.listaTablaVistaDepo}"  var="asi">
                                 <p:column headerText="Nombre">
@@ -108,13 +109,13 @@
                                     <h:outputText value="#{asi.DSC_DISTRITO}"></h:outputText>
                                 </p:column>
                                 <p:column headerText="Filtrar">
-                                    <p:commandLink value="Filtrar" actionListener="#{beanAsignacionDeportistaInstructor.ListaFiltroTablaVistaInstr(asi.DCS_PROVINCIA,asi.DSC_CANTON)}"></p:commandLink>
+                                    <p:commandLink value="Filtrar" actionListener="#{beanAsignacionDeportistaInstructor.setCOD_DEPORTISTA(asi.COD_DEPORTISTA)}" ></p:commandLink>
                                 </p:column>
                             </p:dataTable>
 
-                            <p:commandButton value="Filtrar"  ></p:commandButton>
+                           <h3 class="w3-text-teal">Tabla Instructores</h3>
 
-                            <p:dataTable value="#{beanAsignacionDeportistaInstructor.listaFiltroTablaVistaInstru}" selectionMode="single" rowKey="#{ins.COD_PERSONA}" var="ins">
+                           <p:dataTable value="#{beanAsignacionDeportistaInstructor.listaTablaVistaInstru}" selectionMode="single" rowKey="#{ins.COD_PERSONA}" var="ins">
                                 <p:column headerText="Nombre">
 
                                     <h:outputText value="#{ins.NOMBRE_PERSONA}"></h:outputText>
@@ -138,9 +139,13 @@
                                 <p:column headerText="Distrito">
                                     <h:outputText value="#{ins.DSC_DISTRITO}"></h:outputText>
                                 </p:column>
+                                <p:column headerText="Agregar">
+                                    <p:commandLink value="Agregar" actionListener="#{beanAsignacionDeportistaInstructor.guardarAsignacion(ins.COD_PERSONA)}" ></p:commandLink>
+                                </p:column>
                             </p:dataTable>
+                           <h:outputText value="#{beanAsignacionDeportistaInstructor.mensaje}"></h:outputText>
 
-                            <p:commandButton value="Filtrar"  ></p:commandButton>
+                       
 
 
                         </h:panelGrid>
