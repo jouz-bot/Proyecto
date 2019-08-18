@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Cambio de contraseña</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <style type="text/css">
+            html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
+            .w3-sidebar {
+                z-index: 3;
+                width: 250px;
+                top: 43px;
+                bottom: 0;
+                height: inherit;
+            }
+
+            .ui-datalist .ui-datalist-content {
+                border:0 none
+            }
+
+            .ui-datalist ul {
+                padding: 0px 10px 0 20px;
+                margin: 5px 0;
+            }
+
+            .value {
+                font-weight: bold;
+            }
+
+            .ui-autocomplete-itemtip {
+                -moz-box-sizing: content-box;
+                -webkit-box-sizing: content-box;
+                box-sizing: content-box;
+            }
+            .logo {
+        width: 5%
+    }
+     
+    .detail {
+        width: 95%;
+        padding-left: 25px;
+    }
+     
+    .detail td {
+        font-size: 24px;
+    }
+     
+    .ui-datascroller .ui-datascroller-item {
+        border-bottom: 1px solid #A8A8A8;
+        padding: 25px 10px;
+       
+    }
+        </style>
+
+    </h:head>
+    <h:body>
+        <!-- Navbar -->
+        <div class="w3-top">
+            <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+                <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+                <a href="#" class="w3-bar-item w3-button w3-theme-l1">Logo</a>
+                <a href="#{request.contextPath}/faces/inicioDeportista.xhtml" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Inicio</a>
+                <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contactos</a>
+                <a href="#{request.contextPath}/faces/acceso.xhtml" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Ingresar</a>
+                <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Ayuda</a>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar">
+            <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+                <i class="fa fa-remove"></i>
+            </a>
+            <h4 class="w3-bar-item"><b>Menu</b></h4>
+            <a class="w3-bar-item w3-button w3-hover-black" href="#{request.contextPath}/faces/verPlanEntrenamiento.xhtml">Plan de Entrenamiento</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="#{request.contextPath}/faces/RegistroActividad.xhtml">Registrar Actividad</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="#">Gráfica de Entrenamiento</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="#">Actualizar Perfil</a>
+        </nav>
+
+
+        <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+        <div class="w3-main" style="margin-left:250px">
+
+
+            <div class="w3-row w3-padding-64">
+                <div class="w3-twothird w3-container">
+                    <h1 class="w3-text-teal">Cambiar Contraseña</h1>
+
+                    <!-- prime faces -->
+                    <h:form> 
+
+
+                        <h:outputText value="Digite su nueva contraseña:        "></h:outputText>
+                        <h:inputText value="#{beanCambiarContrasena.password1}"></h:inputText>
+                        <br></br>
+                        <br></br>
+                        <h:outputText value="Verifique su nueva contraseña:        "></h:outputText>
+                        <h:inputText value="#{beanCambiarContrasena.password2}"></h:inputText>
+                        <br></br>
+                        <br></br>
+                        <h:outputText value="#{beanCambiarContrasena.mensajeError}" style="color: red; size: 18px"></h:outputText>
+                        <br></br>
+                        <br></br>
+                        <h:commandButton class="button" value="Cambiar Contraseña" actionListener="#{beanCambiarContrasena.guardarContrasena()}" ></h:commandButton>
+
+                    </h:form>
+
+                </div>
+                <div class="w3-third w3-container">
+
+
+                </div>
+            </div>
+
+
+
+
+            <footer id="myFooter">
+                <div class="w3-container w3-theme-l2 w3-padding-32">
+                    <h4>Footer</h4>
+                </div>
+
+                <div class="w3-container w3-theme-l1">
+                    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+                </div>
+            </footer>
+
+            <!-- END MAIN -->
+        </div>
+    </h:body>
+</html>
+
