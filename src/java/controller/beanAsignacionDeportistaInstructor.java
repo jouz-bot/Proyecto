@@ -91,13 +91,13 @@ public class beanAsignacionDeportistaInstructor implements Serializable {
         return resultLista;
     }
 
-    public void ListaFiltroTablaVistaInstr(String prov, String can) throws SNMPExceptions, SQLException{
+    public void ListaFiltroTablaVistaInstr(String prov, String can, String dis) throws SNMPExceptions, SQLException{
 //           LinkedList<vistaDeportista> lista = new LinkedList<vistaDeportista>();
         AsignacionDeportistaInstructorDB pDB = new AsignacionDeportistaInstructorDB();
 
 //        lista = pDB.tablaFiltroAsigInstructor(prov, can);
         
-        this.setListaFiltroTablaVistaInstru(pDB.tablaFiltroAsigInstructor(prov, can));
+        this.setListaFiltroTablaVistaInstru(pDB.tablaFiltroAsigInstructor(prov, can, dis));
 //        this.listaFiltroTablaVistaInstru=lista;
 //
 //        LinkedList resultLista = new LinkedList();
