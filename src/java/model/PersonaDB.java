@@ -70,8 +70,8 @@ public class PersonaDB {
 
     }
 
-//    Metodo buscar usuario
-    public Persona loginPersona(String login, String password) throws SNMPExceptions {
+//    Metodo login usuario
+    public static Persona loginPersona(String login, String password) throws SNMPExceptions {
         String select;
         Persona oPersona = null;
 
@@ -279,7 +279,7 @@ public class PersonaDB {
         //Se crea la sentencia de Busqueda
         select
                 = "UPDATE PERSONA"
-                + " SET CONTRASENA=" + contrasena + " "
+                + " SET CONTRASENA='" + contrasena + "' "
                 + "WHERE COD_PERSONA='" + id + "' ; ";
 
         accesoDatos.ejecutaSQL(select);

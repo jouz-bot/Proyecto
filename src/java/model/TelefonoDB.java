@@ -31,7 +31,7 @@ private AccesoDatos accesoDatos = new AccesoDatos();
         super();
     }
 
-    public void guardarVoto(Telefono votoC) throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
+    public void guardarTelefono(Telefono votoC) throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
         //Se obtienen los valores del objeto Cliente
        Telefono d = new Telefono();
         d = votoC;

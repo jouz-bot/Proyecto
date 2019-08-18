@@ -79,100 +79,87 @@
                 <div class="w3-twothird w3-container">
                     <h1 class="w3-text-teal">Registro de Instructores</h1>
 
-                    <!-- prime faces -->
                     <h:form>
-                        <p:growl id="msgs" showDetail="true"></p:growl>
-
                         <h:panelGrid columns="2" cellpadding="5">
-
-                            <p:outputLabel value="Tipo de Identificación:"></p:outputLabel>
-                            <p:selectOneMenu value="#{beanRegistroUsuario.COD_TIPO_IDENTIFICACION}">
+                            <h:outputText value="Tipo de Identificación:"></h:outputText>
+                            <h:selectOneMenu value="#{beanRegistroUsuario.COD_TIPO_IDENTIFICACION}">
                                 <f:selectItem itemLabel="1 - Cedula" itemValue="1"></f:selectItem>
                                 <f:selectItem itemLabel="2 - Pasaporte" itemValue="2"></f:selectItem>
                                 <f:selectItem itemLabel="3 - Dimex" itemValue="3"></f:selectItem>
-                            </p:selectOneMenu>
+                            </h:selectOneMenu>
+                            
+                            <h:outputText value="Número de identificación:"></h:outputText>
+                            <h:inputText value="#{beanRegistroUsuario.COD_PERSONA}"></h:inputText>
 
-                            <p:outputLabel value="Número de identificación:"></p:outputLabel>
-                            <p:autoComplete value="#{beanRegistroUsuario.COD_PERSONA}"></p:autoComplete>
+                            <h:outputText value="Nombre:"></h:outputText>
+                            <h:inputText value="#{beanRegistroUsuario.NOMBRE_PERSONA}"></h:inputText>
 
-                            <p:outputLabel value="Nombre:"></p:outputLabel>
-                            <p:autoComplete value="#{beanRegistroUsuario.NOMBRE_PERSONA}"></p:autoComplete>
+                            <h:outputText value="Primer Apellido:"></h:outputText>
+                            <h:inputText value="#{beanRegistroUsuario.APELLIDO1}"></h:inputText>
 
-                            <p:outputLabel value="Primer Apellido:"></p:outputLabel>
-                            <p:autoComplete value="#{beanRegistroUsuario.APELLIDO1}"></p:autoComplete>
+                            <h:outputText value="Segundo Apellido:"></h:outputText>
+                            <h:inputText value="#{beanRegistroUsuario.APELLIDO2}"></h:inputText>
 
-                            <p:outputLabel value="Segundo Apellido:"></p:outputLabel>
-                            <p:autoComplete value="#{beanRegistroUsuario.APELLIDO2}"></p:autoComplete>
-
-                            <p:outputLabel value="Provincia:"></p:outputLabel>
-                            <p:selectOneMenu label="pro" value="#{beanRegistroUsuario.COD_PROVINCIA}" onchange="submit()" id="pro">
+                            <h:outputText value="Provincia:"></h:outputText>
+                            <h:selectOneMenu label="pro" value="#{beanRegistroUsuario.COD_PROVINCIA}" onchange="submit()" id="pro">
                                 <f:selectItems value="#{beanRegistroUsuario.listaProvincia}"></f:selectItems>
-                            </p:selectOneMenu>
-
-                            <p:outputLabel value="Cantón:"></p:outputLabel>
-                            <p:selectOneMenu value="#{beanRegistroUsuario.COD_CANTON}" onchange="submit()">
+                            </h:selectOneMenu>
+                            
+                            <h:outputText value="Cantón:"></h:outputText>
+                            <h:selectOneMenu value="#{beanRegistroUsuario.COD_CANTON}" onchange="submit()">
                                 <f:selectItems value="#{beanRegistroUsuario.listaCantonPorProvincia}"></f:selectItems>
-                            </p:selectOneMenu>
-
-                            <p:outputLabel value="Distrito:"></p:outputLabel>
-                            <p:selectOneMenu value="#{beanRegistroUsuario.COD_DISTRITO}" onchange="submit()">
+                            </h:selectOneMenu>
+                            
+                            <h:outputText value="Distrito:"></h:outputText>
+                            <h:selectOneMenu value="#{beanRegistroUsuario.COD_DISTRITO}" onchange="submit()">
                                 <f:selectItems value="#{beanRegistroUsuario.listaDistritoPorCanton}"></f:selectItems>
-                            </p:selectOneMenu>
-
-                            <p:outputLabel value="Barrio:"></p:outputLabel>
-                            <p:selectOneMenu value="#{beanRegistroUsuario.COD_BARRIO}" onchange="submit()">
+                            </h:selectOneMenu>
+                            
+                            <h:outputText value="Barrio:"></h:outputText>
+                            <h:selectOneMenu value="#{beanRegistroUsuario.COD_BARRIO}" onchange="submit()">
                                 <f:selectItems value="#{beanRegistroUsuario.listaBarrioPorDistrito}"></f:selectItems>
-                            </p:selectOneMenu>
+                            </h:selectOneMenu>
+                            
+                            <h:outputText value="Otras Señas:"></h:outputText>
+                            <h:inputText value="#{beanRegistroUsuario.OTRAS_SENAS}"></h:inputText>
 
-                            <p:outputLabel value="Otras Señas:"></p:outputLabel>
-                            <p:autoComplete value="#{beanRegistroUsuario.OTRAS_SENAS}"></p:autoComplete>
-
-                            <p:outputLabel value="Correo:"></p:outputLabel>
-                            <p:autoComplete value="#{beanRegistroUsuario.DSC_CORREO}"></p:autoComplete>
-                            <p:outputLabel value="Contraseña Temporal:"></p:outputLabel>
-                            <p:autoComplete value="#{beanRegistroUsuario.CONTRASENA}"></p:autoComplete>
-                            <p:outputLabel value="Disciplina Deportiva: "></p:outputLabel>
-                            <p:selectOneMenu value="#{beanRegistroUsuario.COD_DISCIPLINA_DEPORTIVA}">
+                            <h:outputText value="Correo:"></h:outputText>
+                            <h:inputText value="#{beanRegistroUsuario.DSC_CORREO}"></h:inputText>
+                            
+                            <h:outputText value="Contraseña Temporal:"></h:outputText>
+                            <h:inputText value="#{beanRegistroUsuario.CONTRASENA}"></h:inputText>
+                            
+                            <h:outputText value="Disciplina Deportiva: "></h:outputText>
+                            <h:selectOneMenu value="#{beanRegistroUsuario.COD_DISCIPLINA_DEPORTIVA}">
                                 <f:selectItem itemLabel="1 - Futbol" itemValue="1"></f:selectItem>
                                 <f:selectItem itemLabel="2 - Ciclismo" itemValue="2"></f:selectItem>
                                 <f:selectItem itemLabel="3 - Atletismo" itemValue="3"></f:selectItem>
-                            </p:selectOneMenu>
+                            </h:selectOneMenu>
 
                         </h:panelGrid>
-
-                        <p:commandButton class="button" value="Guardar" actionListener="#{beanRegistroUsuario.guardarPersona()}" onchange="submit()"></p:commandButton>
-                        <p:commandButton class="button" value="Nuevo" actionListener="#{beanRegistroUsuario.limpiarCampos()}" onchange="submit()"></p:commandButton>
-
-                        <h:outputLabel value="#{beanRegistroUsuario.mensaje}" ></h:outputLabel>
+                        <h:commandButton class="button" value="Guardar" actionListener="#{beanRegistroUsuario.guardarPersona()}" ></h:commandButton>
+                        <h:commandButton class="button" value="Nuevo" actionListener="#{beanRegistroUsuario.limpiarCampos()}" ></h:commandButton>
+                        
+                        <h:outputText value="#{beanRegistroUsuario.mensaje}" style="color: red; size: 18px"></h:outputText>
+                        
                     </h:form>
 
                 </div>
                 <div class="w3-third w3-container">
 
                     <h:form>
-                        <p:growl id="msgs" showDetail="true"></p:growl>
                         <h:panelGrid columns="2" cellpadding="5">
-                            <p:outputLabel value="Agregar Telefono:"></p:outputLabel>
-                            <p:autoComplete value="#{beanRegistroUsuario.DSC_TELEFONO}"></p:autoComplete>
-                            <p:commandButton class="button" value="Guardar" actionListener="#{beanRegistroUsuario.guardarTelefono()}" ></p:commandButton>
-                            <h:outputText value="#{beanRegistroUsuario.mensaje}"></h:outputText>
+                            <h:outputText value="Agregar Telefono:"></h:outputText>
+                            <h:inputText value="#{beanRegistroUsuario.DSC_TELEFONO}"></h:inputText>
+                            <h:commandButton class="button" value="Guardar Telefono" actionListener="#{beanRegistroUsuario.guardarTelefono()}" ></h:commandButton>
+                            <br></br>
+                            <br></br>
+                            <h:outputText value="#{beanRegistroUsuario.mensajeTelefono}" style="color: red; size: 18px"></h:outputText>
                         </h:panelGrid>
                     </h:form>
 
-                    <h:form>
-                        <p:growl id="msgs" showDetail="true"></p:growl>
-                        <h:panelGrid columns="2" cellpadding="5">
-<!--                            <p:outputLabel value="Disciplina deportiva:"></p:outputLabel>
-                            <p:selectOneMenu style="width: 200px">
-                                <f:selectItem></f:selectItem>
-                            </p:selectOneMenu>
-                            <p:commandButton value="Guardar"  ></p:commandButton>-->
-                        </h:panelGrid>
-                    </h:form>
                 </div>
             </div>
-
-
 
 
             <footer id="myFooter">

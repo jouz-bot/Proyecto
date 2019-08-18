@@ -65,8 +65,17 @@ public class beanRegistroUsuario implements Serializable {
     String DSC_TELEFONO;
 
     String mensaje = "";
+    String mensajeTelefono = "";
 
     public beanRegistroUsuario() {
+    }
+
+    public String getMensajeTelefono() {
+        return mensajeTelefono;
+    }
+
+    public void setMensajeTelefono(String mensajeTelefono) {
+        this.mensajeTelefono = mensajeTelefono;
     }
 
     public String getDSC_TELEFONO() {
@@ -243,7 +252,6 @@ public class beanRegistroUsuario implements Serializable {
         this.setNOMBRE_PERSONA("");
         this.setOTRAS_SENAS("");
         this.limpiarTelefono();
-        
     }
     
     public void limpiarCamposDepo() {
@@ -405,66 +413,123 @@ public class beanRegistroUsuario implements Serializable {
     public void guardarPersona() throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
         Persona vCan = new Persona();
         PersonaDB vDB = new PersonaDB();
-
-        vCan.setCOD_PERSONA(this.getCOD_PERSONA());
-        vCan.setCOD_TIPO_IDENTIFICACION(this.getCOD_TIPO_IDENTIFICACION());
-        vCan.setNOMBRE_PERSONA(this.getNOMBRE_PERSONA());
-        vCan.setAPELLIDO1(this.getAPELLIDO1());
-        vCan.setAPELLIDO2(this.getAPELLIDO2());
-        vCan.setCOD_PROVINCIA(this.getCOD_PROVINCIA());
-        vCan.setCOD_CANTON(this.getCOD_CANTON());
-        vCan.setCOD_DISTRITO(this.getCOD_DISTRITO());
-        vCan.setCOD_BARRIO(this.getCOD_BARRIO());
-        vCan.setOTRAS_SENAS(this.getOTRAS_SENAS());
-        vCan.setDSC_CORREO(this.getDSC_CORREO());
-        vCan.setCONTRASENA(this.getCONTRASENA());
-        vCan.setCOD_DISCIPLINA_DEPORTIVA(this.getCOD_DISCIPLINA_DEPORTIVA());
-        vCan.setCOD_DEPORTISTA(this.getCOD_DEPORTISTA());
-        vCan.setCOD_ROL(this.getCOD_ROL());
-
         try {
 
-            vDB.guardarPersona(vCan);
-            this.setMensaje("Instructor guardado exitosamente!");
+            if (this.getCOD_TIPO_IDENTIFICACION() == 0) {
+                this.setMensaje("Seleccione un tipo de identificacion");
+            } else if (this.getCOD_PERSONA() == 0) {
+                this.setMensaje("Escriba el número de identificación");
+            } else if (vDB.consultaPersona(this.getCOD_PERSONA()) == true) {
+                this.setMensaje("El usuario ya existe en la base de datos");
+            } else if (this.getNOMBRE_PERSONA().equals("")) {
+                this.setMensaje("Escriba el nombre del usuario");
+            } else if (this.getAPELLIDO1().equals("")) {
+                this.setMensaje("Ingrese el primer apellido del usuario");
+            } else if (this.getAPELLIDO2().equals("")) {
+                this.setMensaje("Ingrese el segundo apellido del usuario");
+            } else if (this.getCOD_PROVINCIA() == 0) {
+                this.setMensaje("Debe seleccionar la Provincia");
+            } else if (this.getCOD_CANTON() == 0) {
+                this.setMensaje("Debe seleccionar el Cantón");
+            } else if (this.getCOD_DISTRITO() == 0) {
+                this.setMensaje("Debe seleccionar el Distrito");
+            } else if (this.getCOD_BARRIO() == 0) {
+                this.setMensaje("Debe seleccionar el Barrio");
+            } else if (this.getOTRAS_SENAS().equals("")) {
+                this.setMensaje("Ingreso Otras señas");
+            } else if (this.getDSC_CORREO().equals("")) {
+                this.setMensaje("Debe proporcionar un correo");
+            } else if (this.getCONTRASENA().equals("")) {
+                this.setMensaje("Debe ingresar una contraseña temporal");
+            } else if (this.getCOD_DISCIPLINA_DEPORTIVA() == 0) {
+                this.setMensaje("Debe seleccionar una disciplina");
+            } else {
+
+                vCan.setCOD_PERSONA(this.getCOD_PERSONA());
+                vCan.setCOD_TIPO_IDENTIFICACION(this.getCOD_TIPO_IDENTIFICACION());
+                vCan.setNOMBRE_PERSONA(this.getNOMBRE_PERSONA());
+                vCan.setAPELLIDO1(this.getAPELLIDO1());
+                vCan.setAPELLIDO2(this.getAPELLIDO2());
+                vCan.setCOD_PROVINCIA(this.getCOD_PROVINCIA());
+                vCan.setCOD_CANTON(this.getCOD_CANTON());
+                vCan.setCOD_DISTRITO(this.getCOD_DISTRITO());
+                vCan.setCOD_BARRIO(this.getCOD_BARRIO());
+                vCan.setOTRAS_SENAS(this.getOTRAS_SENAS());
+                vCan.setDSC_CORREO(this.getDSC_CORREO());
+                vCan.setCONTRASENA(this.getCONTRASENA());
+                vCan.setCOD_DISCIPLINA_DEPORTIVA(this.getCOD_DISCIPLINA_DEPORTIVA());
+                vCan.setCOD_DEPORTISTA(this.getCOD_DEPORTISTA());
+                vCan.setCOD_ROL(this.getCOD_ROL());
+
+                vDB.guardarPersona(vCan);
+                this.setMensaje("Instructor guardado exitosamente!");
+            }
 
         } catch (Exception e) {
-            FacesContext context2 = FacesContext.getCurrentInstance();
-            context2.addMessage(null, new FacesMessage("Error", e.toString() + "Error al guardar al Instructor"));
+            this.setMensaje("Error al guardar al Instructor!");
         }
 
     }
 
-    //    Guardar instructor
+    //    Guardar deportista
     public void guardarDeportista() throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
         Persona vPersona = new Persona();
         PersonaDB vPersonaDB = new PersonaDB();
         Deportista vDeportista = new Deportista();
         DeportistaDB vDeportistaBD = new DeportistaDB();
+        if (this.getCOD_TIPO_IDENTIFICACION() == 0) {
+            this.setMensaje("Seleccione un tipo de identificacion");
+        } else if (this.getCOD_PERSONA() == 0) {
+            this.setMensaje("Escriba el número de identificación");
+        } else if (vPersonaDB.consultaPersona(this.getCOD_PERSONA()) == true) {
+            this.setMensaje("El usuario ya existe en la base de datos");
+        } else if (this.getNOMBRE_PERSONA().equals("")) {
+            this.setMensaje("Escriba el nombre del usuario");
+        } else if (this.getAPELLIDO1().equals("")) {
+            this.setMensaje("Ingrese el primer apellido del usuario");
+        } else if (this.getAPELLIDO2().equals("")) {
+            this.setMensaje("Ingrese el segundo apellido del usuario");
+        } else if (this.getCOD_PROVINCIA() == 0) {
+            this.setMensaje("Debe seleccionar la Provincia");
+        } else if (this.getCOD_CANTON() == 0) {
+            this.setMensaje("Debe seleccionar el Cantón");
+        } else if (this.getCOD_DISTRITO() == 0) {
+            this.setMensaje("Debe seleccionar el Distrito");
+        } else if (this.getCOD_BARRIO() == 0) {
+            this.setMensaje("Debe seleccionar el Barrio");
+        } else if (this.getOTRAS_SENAS().equals("")) {
+            this.setMensaje("Ingreso Otras señas");
+        } else if (this.getDSC_CORREO().equals("")) {
+            this.setMensaje("Debe proporcionar un correo");
+        } else if (this.getCONTRASENA().equals("")) {
+            this.setMensaje("Debe ingresar una contraseña temporal");
+        } else if (this.getCOD_DISCIPLINA_DEPORTIVA() == 0) {
+            this.setMensaje("Debe seleccionar una disciplina");
+        } else {
+            //datos persona
+            vPersona.setCOD_PERSONA(this.getCOD_PERSONA());
+            vPersona.setCOD_TIPO_IDENTIFICACION(this.getCOD_TIPO_IDENTIFICACION());
+            vPersona.setNOMBRE_PERSONA(this.getNOMBRE_PERSONA());
+            vPersona.setAPELLIDO1(this.getAPELLIDO1());
+            vPersona.setAPELLIDO2(this.getAPELLIDO2());
+            vPersona.setCOD_PROVINCIA(this.getCOD_PROVINCIA());
+            vPersona.setCOD_CANTON(this.getCOD_CANTON());
+            vPersona.setCOD_DISTRITO(this.getCOD_DISTRITO());
+            vPersona.setCOD_BARRIO(this.getCOD_BARRIO());
+            vPersona.setOTRAS_SENAS(this.getOTRAS_SENAS());
+            vPersona.setDSC_CORREO(this.getDSC_CORREO());
+            vPersona.setCONTRASENA(this.getCONTRASENA());
+            vPersona.setCOD_DISCIPLINA_DEPORTIVA(this.getCOD_DISCIPLINA_DEPORTIVA());
+            vPersona.setCOD_DEPORTISTA(this.getCOD_DEPORTISTA());
+            vPersona.setCOD_ROL(this.getCOD_ROL());
 
-        //datos persona
-        vPersona.setCOD_PERSONA(this.getCOD_PERSONA());
-        vPersona.setCOD_TIPO_IDENTIFICACION(this.getCOD_TIPO_IDENTIFICACION());
-        vPersona.setNOMBRE_PERSONA(this.getNOMBRE_PERSONA());
-        vPersona.setAPELLIDO1(this.getAPELLIDO1());
-        vPersona.setAPELLIDO2(this.getAPELLIDO2());
-        vPersona.setCOD_PROVINCIA(this.getCOD_PROVINCIA());
-        vPersona.setCOD_CANTON(this.getCOD_CANTON());
-        vPersona.setCOD_DISTRITO(this.getCOD_DISTRITO());
-        vPersona.setCOD_BARRIO(this.getCOD_BARRIO());
-        vPersona.setOTRAS_SENAS(this.getOTRAS_SENAS());
-        vPersona.setDSC_CORREO(this.getDSC_CORREO());
-        vPersona.setCONTRASENA(this.getCONTRASENA());
-        vPersona.setCOD_DISCIPLINA_DEPORTIVA(this.getCOD_DISCIPLINA_DEPORTIVA());
-        vPersona.setCOD_DEPORTISTA(this.getCOD_DEPORTISTA());
-        vPersona.setCOD_ROL(this.getCOD_ROL());
-
-        //datos dportista
-        vDeportista.setCOD_PERSONA(vPersona.getCOD_PERSONA());
-        vDeportista.setPESO(this.getPESO());
-        vDeportista.setTALLA(this.getTALLA());
-        vDeportista.setALTURA(this.getALTURA());
-        vDeportista.setDSC_OBJETIVOS(this.getDSC_OBJETIVOS());
-
+            //datos dportista
+            vDeportista.setCOD_PERSONA(vPersona.getCOD_PERSONA());
+            vDeportista.setPESO(this.getPESO());
+            vDeportista.setTALLA(this.getTALLA());
+            vDeportista.setALTURA(this.getALTURA());
+            vDeportista.setDSC_OBJETIVOS(this.getDSC_OBJETIVOS());
+        }
         try {
 
             vDeportistaBD.guardarDeportista(vPersona, vDeportista);
@@ -480,15 +545,19 @@ public class beanRegistroUsuario implements Serializable {
 
 //    Guardar telefono
     public void guardarTelefono() throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
+        Persona oUsuario = new Persona();
+        PersonaDB oUsuarioDB = new PersonaDB();
 
         if (this.COD_PERSONA == 0) {
-            FacesContext context2 = FacesContext.getCurrentInstance();
-            context2.addMessage(null, new FacesMessage("Error", "Debe de ingresar el numero de Instructor."));
+            this.setMensajeTelefono("Debe de digitar la identificación!");
+        }
+
+        if (oUsuarioDB.consultaPersona(this.getCOD_PERSONA()) == false){
+            this.setMensajeTelefono("Debe de registrar al Usuario antes de asignar un telefono");
         }
 
         if (this.DSC_TELEFONO.equals("")) {
-            FacesContext context2 = FacesContext.getCurrentInstance();
-            context2.addMessage(null, new FacesMessage("Error", "Debe de ingresar un numero de telefono"));
+            this.setMensajeTelefono("Debe de ingresar un número de telefono");
         }
 
         try {
@@ -498,18 +567,19 @@ public class beanRegistroUsuario implements Serializable {
             vCan.setDSC_TELEFONO(this.getDSC_TELEFONO());
             vCan.setCOD_PERSONA(this.getCOD_PERSONA());
 
-            vDB.guardarVoto(vCan);
+            vDB.guardarTelefono(vCan);
+            
             this.limpiarTelefono();
             this.setMensaje("Telefono guardado exitosamente!");
 
         } catch (Exception e) {
-            FacesContext context2 = FacesContext.getCurrentInstance();
-            context2.addMessage(null, new FacesMessage("Error", e.toString()));
+            this.setMensajeTelefono("Error al guardar el Telefono");
         }
     }
 
 //        Limpiar telefono
     public void limpiarTelefono() {
         this.setDSC_TELEFONO("");
+        this.setMensajeTelefono("");
     }
 }

@@ -22,9 +22,10 @@ import model.PersonaDB;
 public class beanLoginControlador implements Serializable {
     String login;
     String password;
-    Persona oPersona;
     Persona usuarioIngresado;
-    
+    Persona oPersona = new Persona();
+    String mensaje;
+
     /**
      * Creates a new instance of beanLoginControlador
      */
@@ -43,6 +44,22 @@ public class beanLoginControlador implements Serializable {
         return password;
     }
 
+    public Persona getUsuarioIngresado() {
+        return usuarioIngresado;
+    }
+
+    public void setUsuarioIngresado(Persona usuarioIngresado) {
+        this.usuarioIngresado = usuarioIngresado;
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -54,30 +71,28 @@ public class beanLoginControlador implements Serializable {
     public void setoPersona(Persona oPersona) {
         this.oPersona = oPersona;
     }
-
-
     
-     public void autenticar(){
-         try {
-             oPersona = new PersonaDB().loginPersona(this.login, this.password);
 
-             if (oPersona != null) {
-                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("Usuario", usuarioIngresado);
-                 switch (oPersona.getCOD_ROL()) {
-                     case 1:
-                         FacesContext.getCurrentInstance().getExternalContext().redirect("inicioAdministrador.xhtml");
-                         break;
-                     case 2:
-                         FacesContext.getCurrentInstance().getExternalContext().redirect("inicioInstructor.xhtml");
-                         break;
-                     default:
-                         FacesContext.getCurrentInstance().getExternalContext().redirect("inicioDeportista.xhtml");
+       public void autenticar() {
+
+        try {
+            oPersona = new PersonaDB().loginPersona(this.getLogin(), this.getPassword());
+
+            if (oPersona != null) {
+                switch (oPersona.getCOD_ROL()) {
+                    case 1:
+                        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("Usuario", oPersona);
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("inicioAdministrador.xhtml");
+                        break;
+                    case 2:
+                        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("Usuario", oPersona);
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("inicioInstructor.xhtml");
+                        break;
+                    default:
+                        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("Usuario", oPersona);
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("inicioDeportista.xhtml");
                         break;
                 }
-
-            } else {
-                FacesContext context = FacesContext.getCurrentInstance();
-                context.addMessage(null, new FacesMessage("Usuario ó Clave incorrecta!"));
             }
 
         } catch (Exception e) {
@@ -86,4 +101,4 @@ public class beanLoginControlador implements Serializable {
         }
 
     }
-}
+    }

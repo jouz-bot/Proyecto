@@ -3,10 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
-        <title>Reigistro de Actividad</title>
+        <title>Cambio de contraseña</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
         <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css"/>
@@ -98,18 +97,19 @@
                     <!-- prime faces -->
                     <h:form> 
 
-                        <f:facet name="header">
-                            Cambio de contraseña
-                        </f:facet>
 
-                        <p:outputLabel value="Número de identificación:"></p:outputLabel>
-                        <p:autoComplete value="#"></p:autoComplete>
-
-                        <p:outputLabel value="Nueva contraseña"></p:outputLabel>
-                        <p:autoComplete value="#"></p:autoComplete>
-
-                        <p:outputLabel value="Primer Apellido:"></p:outputLabel>
-                        <p:autoComplete value="#"></p:autoComplete>
+                        <h:outputText value="Digite su nueva contraseña:        "></h:outputText>
+                        <h:inputText value="#{beanCambiarContrasena.password1}"></h:inputText>
+                        <br></br>
+                        <br></br>
+                        <h:outputText value="Verifique su nueva contraseña:        "></h:outputText>
+                        <h:inputText value="#{beanCambiarContrasena.password2}"></h:inputText>
+                        <br></br>
+                        <br></br>
+                        <h:outputText value="#{beanCambiarContrasena.mensajeError}" style="color: red; size: 18px"></h:outputText>
+                        <br></br>
+                        <br></br>
+                        <h:commandButton class="button" value="Cambiar Contraseña" actionListener="#{beanCambiarContrasena.guardarContrasena()}" ></h:commandButton>
 
                     </h:form>
 

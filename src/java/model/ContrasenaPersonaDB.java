@@ -130,7 +130,7 @@ public class ContrasenaPersonaDB {
         //Se crea la sentencia de actualización
         String insert
                 = "INSERT INTO CONTRASENA_PERSONA(COD_PERSONA, DSC_CONTRESANA, FECHA, ACTIVO) VALUES ("
-                + " '" + idPersona + "', " + contrasena + ", '" + fecha + "', '" + activo + "')";
+                + " '" + idPersona + "', '" + contrasena + "', " + null + ", '" + activo + "')";
         //Se ejecuta la sentencia SQL
         accesoDatos.ejecutaSQL(insert);
     }
