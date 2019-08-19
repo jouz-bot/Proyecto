@@ -31,6 +31,11 @@ public class vistaDeportista {
         this.DSC_DISTRITO = DSC_DISTRITO;
     }
 
+    public vistaDeportista(String NOMBRE_PERSONA, String APELLIDO1) {
+        this.NOMBRE_PERSONA = NOMBRE_PERSONA;
+        this.APELLIDO1 = APELLIDO1;
+    }
+
     public vistaDeportista(String NOMBRE_PERSONA, String APELLIDO1, int COD_PERSONA, String DSC_DISPLINA_DEPORTIVA, String DCS_PROVINCIA, String DSC_CANTON, String DSC_DISTRITO) {
         this.NOMBRE_PERSONA = NOMBRE_PERSONA;
         this.APELLIDO1 = APELLIDO1;

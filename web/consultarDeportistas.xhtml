@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css"/>
@@ -41,7 +42,7 @@
             </a>
             <h4 class="w3-bar-item"><b>Menú</b></h4>
             <a class="w3-bar-item w3-button w3-hover-black" href="#{request.contextPath}/faces/registrarPlanEntrenamiento.xhtml">Registrar Plan de Entrenamiento</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="consultarDeportistas.xhtml">Consultar Deportistas</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="#{request.contextPath}/faces/verPlanEntrenamiento.xhtml">Consultar Deportistas</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="#">Gráfica de Entrenamiento</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="#">Actualizar Perfil</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="cambiarContrasena.xhtml">Cambiar Contraseña</a>
@@ -55,29 +56,37 @@
 
             <div class="w3-row w3-padding-64">
                 <div class="w3-twothird w3-container">
-                    <h1 class="w3-text-teal">Heading</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum
-                        dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                </div>
-                <div class="w3-third w3-container">
-                    <img src="Resourses/img/deportes.jpg" width="400" height="200">
-                        
-                    </img>
+                    <h1 class="w3-text-teal">Consulta de Deportistas Asignados</h1>
+                    <div align="center" class="datagrid" style="border-style: solid; border-color: black; margin: auto">
+                        <h:dataTable value="#{beanConsultarDeportistasAsignados.listaDeportistas}" var="vistaDeportista" >
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nombre"/>
+                        </f:facet>
+                        <h:outputText value="#{vistaDeportista.NOMBRE_PERSONA}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Apellido"/>
+                        </f:facet>
+                        <h:outputText value="#{vistaDeportista.APELLIDO1}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Accion"/>
+                        </f:facet>
+                        <h:commandLink value="Asignar Plan" actionListener="#" ></h:commandLink>
+
+                    </h:column>
+                </h:dataTable>
+            </div>
+             
                 </div>
             </div>
 
-            <div class="w3-row" style=" padding-bottom: 20px">
-                <div class="w3-twothird w3-container">
-                    <h1 class="w3-text-teal">Heading</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum
-                        dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                </div>
-                <div class="w3-third w3-container">
-                    <img src="Resourses/img/Especiales-de-Deportes.jpg" width="400" height="200">
-                        
-                    </img>
-                </div>
-            </div>
+
 
 
 

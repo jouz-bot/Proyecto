@@ -196,5 +196,46 @@ public class AsignacionDeportistaInstructorDB {
         }
         return listaDepo;
     }
+    
+    
+    //Metodo buscar deportista asignado
+        public LinkedList<vistaDeportista> tablaDeportistaAsignados(int id) throws SNMPExceptions, SQLException {
+        String select1;
+        String select;
+        LinkedList<vistaDeportista> listaDepo = new LinkedList<vistaDeportista>();
+
+        try {
+
+            //Se instancia la clase de acceso a datos
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            //Se crea la sentencia de búsqueda
+            select = "SELECT PERSONA.NOMBRE_PERSONA, PERSONA.APELLIDO1 "
+                    + "FROM PERSONA INNER JOIN ASIGNACION_DEPORTISTA_INSTRUCTOR ON PERSONA.COD_PERSONA = ASIGNACION_DEPORTISTA_INSTRUCTOR.COD_PERSONA "
+                    + "WHERE ASIGNACION_DEPORTISTA_INSTRUCTOR.COD_PERSONA = '" + id +"' ";
+            //Se ejecuta la sentencia SQL
+            ResultSet rsPA = accesoDatos.ejecutaSQLRetornaRS(select);
+            //Se llena el arryaList con los proyectos   
+            while (rsPA.next()) {
+
+                String NOMBRE_PERSONA = rsPA.getString("NOMBRE_PERSONA");
+                String APELLIDO1 = rsPA.getString("APELLIDO1");
+
+                vistaDeportista pDeportista = new vistaDeportista(NOMBRE_PERSONA, APELLIDO1);
+                listaDepo.add(pDeportista);
+            }
+            rsPA.close();
+
+        } catch (SQLException e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION,
+                    e.getMessage(), e.getErrorCode());
+        } catch (Exception e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION,
+                    e.getMessage());
+        } finally {
+
+        }
+        return listaDepo;
+    }
 
 }
