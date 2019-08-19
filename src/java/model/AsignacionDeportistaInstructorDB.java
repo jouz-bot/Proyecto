@@ -147,7 +147,7 @@ public class AsignacionDeportistaInstructorDB {
         return listaDepo;
     }
 
-    public LinkedList<vistaDeportista> tablaFiltroAsigInstructor(String prov, String can) throws SNMPExceptions, SQLException {
+    public LinkedList<vistaDeportista> tablaFiltroAsigInstructor(String prov, String can, String dis) throws SNMPExceptions, SQLException {
         String select = "";
         LinkedList<vistaDeportista> listaDepo = new LinkedList<vistaDeportista>();
 
@@ -165,7 +165,8 @@ public class AsignacionDeportistaInstructorDB {
                     + " PROVINCIAS ON PERSONA.COD_PROVINCIA = PROVINCIAS.COD_PROVINCIA INNER JOIN\n"
                     + "CANTONES ON PERSONA.COD_CANTON = CANTONES.COD_CANTON AND PERSONA.COD_PROVINCIA = CANTONES.COD_PROVINCIA INNER JOIN\n"
                     + "DISTRITOS ON PERSONA.COD_DISTRITO = DISTRITOS.COD_DISTRITO AND PERSONA.COD_CANTON = DISTRITOS.COD_CANTON AND PERSONA.COD_PROVINCIA = DISTRITOS.COD_PROVINCIA\n"
-                    + "where DEPORTISTA.COD_PERSONA is null and provincias.DSC_PROVINCIA= '"+prov+"' and CANTONES.DSC_CANTON = '"+can+"'";
+                    + "where DEPORTISTA.COD_PERSONA is null and provincias.DSC_PROVINCIA= '"+prov+"' and CANTONES.DSC_CANTON = '"+can+"'"
+                    +"and DISCIPLINA_DEPORTIVA.DSC_DISPLINA_DEPORTIVA = '"+dis+"';";
             //Se ejecuta la sentencia SQL
             ResultSet rsPA = accesoDatos.ejecutaSQLRetornaRS(select);
             //Se llena el arryaList con los proyectos   

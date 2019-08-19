@@ -6,7 +6,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Reigistro de Actividad</title>
+        <title>Asignar Instructor</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
         <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css"/>
@@ -82,65 +82,112 @@
                         <p:growl id="msgs" showDetail="true"></p:growl>
 
                         <h:panelGrid columns="2" cellpadding="5">
+                            <h3 class="w3-text-teal">Tabla Deportistas</h3>
 
-                            <p:dataTable value="#{beanAsignacionDeportistaInstructor.listaTablaVistaDepo}"  var="asi">
-                                <p:column headerText="Nombre">
+                            <h:dataTable style="border: solid black 2px " value="#{beanAsignacionDeportistaInstructor.listaTablaVistaDepo}"  var="asi">
 
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Nombre"></h:outputText>
+                                    </f:facet>
                                     <h:outputText  value="#{asi.NOMBRE_PERSONA}"></h:outputText>
-                                </p:column>
-                                <p:column headerText="Apellido">
+                                </h:column>
 
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Apellido"></h:outputText>
+                                    </f:facet>
                                     <h:outputText value="#{asi.APELLIDO1}"></h:outputText>
-                                </p:column>
+                                </h:column>
 
-                                <p:column headerText="Disciplina Deportiva">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Disciplina Deportiva"></h:outputText>
+                                    </f:facet>
                                     <h:outputText value="#{asi.DSC_DISPLINA_DEPORTIVA}"></h:outputText>
-                                </p:column>
+                                </h:column>
 
-                                <p:column headerText="Provincia">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Provincia"></h:outputText>
+                                    </f:facet>
                                     <h:outputText value="#{asi.DCS_PROVINCIA}"></h:outputText>
-                                </p:column>
+                                </h:column>
 
-                                <p:column headerText="Cantón">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Cantón"></h:outputText>
+                                    </f:facet>
                                     <h:outputText value="#{asi.DSC_CANTON}"></h:outputText>
-                                </p:column>
-                                <p:column headerText="Distrito">
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Distrito"></h:outputText>
+                                    </f:facet>
                                     <h:outputText value="#{asi.DSC_DISTRITO}"></h:outputText>
-                                </p:column>
-                                <p:column headerText="Filtrar">
-                                    <p:commandLink value="Filtrar" actionListener="#{beanAsignacionDeportistaInstructor.ListaFiltroTablaVistaInstr(asi.DCS_PROVINCIA,asi.DSC_CANTON)}"></p:commandLink>
-                                </p:column>
-                            </p:dataTable>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Filtrar"></h:outputText>
+                                    </f:facet>
+                                    <h:commandLink value="Filtrar" actionListener="#{beanAsignacionDeportistaInstructor.ListaFiltroTablaVistaInstr(asi.DCS_PROVINCIA, asi.DSC_CANTON, asi.DSC_DISPLINA_DEPORTIVA,asi.COD_DEPORTISTA)}" ></h:commandLink>
+                                </h:column>
+                            </h:dataTable>
 
-                            <p:commandButton value="Filtrar"  ></p:commandButton>
+                            <h3 class="w3-text-teal">Tabla Instructores</h3>
 
-                            <p:dataTable value="#{beanAsignacionDeportistaInstructor.listaFiltroTablaVistaInstru}" selectionMode="single" rowKey="#{ins.COD_PERSONA}" var="ins">
-                                <p:column headerText="Nombre">
-
+                            <h:dataTable value="#{beanAsignacionDeportistaInstructor.listaFiltroTablaVistaInstru}" var="ins">
+                                <h:column >
+                                    <f:facet name="header">
+                                        <h:outputText value="Nombre"></h:outputText>
+                                    </f:facet>
                                     <h:outputText value="#{ins.NOMBRE_PERSONA}"></h:outputText>
-                                </p:column>
-                                <p:column headerText="Apellido">
-
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Apellido"></h:outputText>
+                                    </f:facet>
                                     <h:outputText value="#{ins.APELLIDO1}"></h:outputText>
-                                </p:column>
+                                </h:column>
 
-                                <p:column headerText="Disciplina Deportiva">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Disciplina Deportiva"></h:outputText>
+                                    </f:facet>
                                     <h:outputText value="#{ins.DSC_DISPLINA_DEPORTIVA}"></h:outputText>
-                                </p:column>
+                                </h:column>
 
-                                <p:column headerText="Provincia">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Provincia"></h:outputText>
+                                    </f:facet>
                                     <h:outputText value="#{ins.DCS_PROVINCIA}"></h:outputText>
-                                </p:column>
+                                </h:column>
 
-                                <p:column headerText="Cantón">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Cantón"></h:outputText>
+                                    </f:facet>
                                     <h:outputText value="#{ins.DSC_CANTON}"></h:outputText>
-                                </p:column>
-                                <p:column headerText="Distrito">
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Distrito"></h:outputText>
+                                    </f:facet>
                                     <h:outputText value="#{ins.DSC_DISTRITO}"></h:outputText>
-                                </p:column>
-                            </p:dataTable>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Agregar"></h:outputText>
+                                    </f:facet>
+                                    <h:commandLink value="Agregar" actionListener="#{beanAsignacionDeportistaInstructor.guardarAsignacion(ins.COD_PERSONA)}" ></h:commandLink>
+                                </h:column>
+                            </h:dataTable>
+                            <center>
+                                <h:outputText style="color:blue" value="#{beanAsignacionDeportistaInstructor.mensaje}"></h:outputText>  
+                            </center>
 
-                            <p:commandButton value="Filtrar"  ></p:commandButton>
 
 
                         </h:panelGrid>
