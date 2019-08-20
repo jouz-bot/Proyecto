@@ -20,6 +20,7 @@ import model.Barrio;
 import model.BarrioDB;
 import model.Cantones;
 import model.CantonesDB;
+import model.Correo;
 import model.Deportista;
 import model.DeportistaDB;
 import model.Distritos;
@@ -66,6 +67,7 @@ public class beanRegistroUsuario implements Serializable {
 
     String mensaje = "";
     String mensajeTelefono = "";
+    String MensajeCorreo="";
 
     public beanRegistroUsuario() {
     }
@@ -109,6 +111,16 @@ public class beanRegistroUsuario implements Serializable {
     public void setNOMBRE_PERSONA(String NOMBRE_PERSONA) {
         this.NOMBRE_PERSONA = NOMBRE_PERSONA;
     }
+
+    public String getMensajeCorreo() {
+        return MensajeCorreo;
+    }
+
+    public void setMensajeCorreo(String MensajeCorreo) {
+        this.MensajeCorreo = MensajeCorreo;
+    }
+    
+    
 
     public String getAPELLIDO1() {
         return APELLIDO1;
@@ -533,6 +545,7 @@ public class beanRegistroUsuario implements Serializable {
         try {
 
             vDeportistaBD.guardarDeportista(vPersona, vDeportista);
+            this.enviarEmail(vPersona);
             this.limpiarCamposDepo();
             this.setMensaje("Deportista guardado exitosamente!");
 
@@ -581,5 +594,32 @@ public class beanRegistroUsuario implements Serializable {
     public void limpiarTelefono() {
         this.setDSC_TELEFONO("");
         this.setMensajeTelefono("");
+    }
+    
+    
+    public void enviarEmail(Persona per) {
+        try {
+           
+            
+            //Envio a Instructor
+            String destino = per.getDSC_CORREO();
+            String asunto = "Bienvenido a FitCRapp";
+            String mensajeCorreo = "Bienvenido "+per.getNOMBRE_PERSONA()+" "+per.getAPELLIDO1()+" "+ 
+                    per.getAPELLIDO2()+"\n"
+                    +"¡Gracias por formar parte de la comunidad FitCRapp! Es genial verte por aquí.";
+
+            Correo objCorreo = new Correo();
+
+            if (objCorreo.enviarMail(destino, asunto, mensajeCorreo)) {
+                
+            this.setMensajeCorreo("Se ha enviado un correo electrónico");
+            }else{
+            
+            this.setMensajeCorreo("Problema al enviar Correo");
+            }
+
+        } catch (Exception e) {
+            this.setMensajeCorreo(e.getMessage());
+        }
     }
 }
