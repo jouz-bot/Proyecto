@@ -57,9 +57,7 @@ public class beanCambiarContrasena implements Serializable {
                     oPersona = (Persona)user;
                     int id = oPersona.getCOD_PERSONA();
                     this.setLogin(id);
-//                Persona oUser = (Persona) user;
-//                this.setoPersona(oUser);
-//                this.setLogin(oUser.getCOD_PERSONA());
+
 
             } catch (ClassCastException e) {
 

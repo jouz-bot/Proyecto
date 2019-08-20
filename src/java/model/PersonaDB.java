@@ -286,4 +286,39 @@ public class PersonaDB {
         //se ejecuta la sentencia sql
 
     }
+    
+    //Metodo actualizar persona
+       public void actualizarInstructor(Persona personaC) throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
+        //Se obtienen los valores del objeto Cliente
+        Persona d = new Persona();
+        d = personaC;
+
+        //Datos de CLiente
+        int COD_PERSONA = d.getCOD_PERSONA();
+        int COD_TIPO_IDENTIFICACION = d.getCOD_TIPO_IDENTIFICACION();
+        String NOMBRE_PERSONA = d.getNOMBRE_PERSONA();
+        String APELLIDO1 = d.getAPELLIDO1();
+        String APELLIDO2 = d.getAPELLIDO2();
+        float COD_PROVINCIA = d.getCOD_PROVINCIA();
+        float COD_CANTON = d.getCOD_CANTON();
+        float COD_DISTRITO = d.getCOD_DISTRITO();
+        float COD_BARRIO = d.getCOD_BARRIO();
+        String OTRAS_SENAS = d.getOTRAS_SENAS();
+        String DSC_CORREO = d.getDSC_CORREO();
+        String CONTRASENA = d.getCONTRASENA();
+        int COD_DISCIPLINA_DEPORTIVA = d.getCOD_DISCIPLINA_DEPORTIVA();
+        String COD_DEPORTISTA = "null";
+        int COD_ROL = d.getCOD_ROL();
+
+        //Se crea la sentencia de actualización
+        String insert
+                = "UPDATE PERSONA SET COD_TIPO_IDENTIFICACION=" + COD_TIPO_IDENTIFICACION + ","
+                + " NOMBRE_PERSONA='" + NOMBRE_PERSONA + "', APELLIDO1='" + APELLIDO1 + "', APELLIDO2='" + APELLIDO2 + "',"
+                + " COD_PROVINCIA=" + COD_PROVINCIA + ", COD_CANTON=" + COD_CANTON + ", COD_DISTRITO=" + COD_DISTRITO + ","
+                + " COD_BARRIO=" + COD_BARRIO + ", OTRAS_SENAS='" + OTRAS_SENAS + "', DSC_CORREO='" + DSC_CORREO + "', CONTRASENA='" + CONTRASENA + "',"
+                + " COD_DISCIPLINA_DEPORTIVA=" + COD_DISCIPLINA_DEPORTIVA + ", COD_DEPORTISTA=" + COD_DEPORTISTA + " , COD_ROL=" + COD_ROL + " ;";
+        //Se ejecuta la sentencia SQL
+        accesoDatos.ejecutaSQL(insert);
+
+    }
 }

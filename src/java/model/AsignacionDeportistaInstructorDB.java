@@ -212,7 +212,7 @@ public class AsignacionDeportistaInstructorDB {
 
             //Se crea la sentencia de búsqueda
             select = "SELECT PERSONA.NOMBRE_PERSONA, PERSONA.APELLIDO1 "
-                    + "FROM PERSONA INNER JOIN ASIGNACION_DEPORTISTA_INSTRUCTOR ON PERSONA.COD_PERSONA = ASIGNACION_DEPORTISTA_INSTRUCTOR.COD_PERSONA "
+                    + "FROM PERSONA LEFT JOIN ASIGNACION_DEPORTISTA_INSTRUCTOR ON PERSONA.COD_DEPORTISTA = ASIGNACION_DEPORTISTA_INSTRUCTOR.COD_DEPORTISTA "
                     + "WHERE ASIGNACION_DEPORTISTA_INSTRUCTOR.COD_PERSONA = '" + id +"' ";
             //Se ejecuta la sentencia SQL
             ResultSet rsPA = accesoDatos.ejecutaSQLRetornaRS(select);

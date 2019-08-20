@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      import = "java.util.LinkedList" >
+    <h:head>
+        <title>Actualizar Perfil Instructor</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <style type="text/css">
+            html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
+            .w3-sidebar {
+                z-index: 3;
+                width: 250px;
+                top: 43px;
+                bottom: 0;
+                height: inherit;
+            }
+
+            .ui-datalist .ui-datalist-content {
+                border:0 none
+            }
+
+            .ui-datalist ul {
+                padding: 0px 10px 0 20px;
+                margin: 5px 0;
+            }
+
+            .value {
+                font-weight: bold;
+            }
+
+            .ui-autocomplete-itemtip {
+                -moz-box-sizing: content-box;
+                -webkit-box-sizing: content-box;
+                box-sizing: content-box;
+            }
+        </style>
+
+    </h:head>
+    <h:body>
+        <!-- Navbar -->
+        <div class="w3-top">
+            <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+                <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+                <a href="#" class="w3-bar-item w3-button w3-theme-l1">Logo</a>
+                <a href="#{request.contextPath}/faces/index.xhtml" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Inicio</a>
+                <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Sobre nosotros</a>
+                <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contactos</a>
+                <a href="#{request.contextPath}/faces/acceso.xhtml" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Ingresar</a>
+                <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Ayuda</a>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar">
+            <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+                <i class="fa fa-remove"></i>
+            </a>
+            <h4 class="w3-bar-item"><b>Menu</b></h4>
+            <a class="w3-bar-item w3-button w3-hover-black" href="#{request.contextPath}/faces/RegistroInstructor.xhtml">Registrar Entrenador</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="#{request.contextPath}/faces/AsignacionDeportista.xhtml">Asignar Deportista</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="#">Gráfica de Entrenamiento</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="actualizarPerfilInstructor.xhtml">Actualizar Perfil Entrenador</a>
+        </nav>
+
+
+        <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+        <div class="w3-main" style="margin-left:250px">
+
+
+            <div class="w3-row w3-padding-64">
+                <div class="w3-twothird w3-container">
+                    <h1 class="w3-text-teal">Registro de Instructores</h1>
+
+                    <h:form>
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputText value="Tipo de Identificación:"></h:outputText>
+                            <h:selectOneMenu value="#{beanActualizarInstructor.COD_TIPO_IDENTIFICACION}">
+                                <f:selectItem itemLabel="1 - Cedula" itemValue="1"></f:selectItem>
+                                <f:selectItem itemLabel="2 - Pasaporte" itemValue="2"></f:selectItem>
+                                <f:selectItem itemLabel="3 - Dimex" itemValue="3"></f:selectItem>
+                            </h:selectOneMenu>
+                            
+                            <h:outputText value="Número de identificación:"></h:outputText>
+                            <h:inputText value="#{beanActualizarInstructor.COD_PERSONA}" readonly="true"></h:inputText>
+
+                            <h:outputText value="Nombre:"></h:outputText>
+                            <h:inputText value="#{beanActualizarInstructor.NOMBRE_PERSONA}"></h:inputText>
+
+                            <h:outputText value="Primer Apellido:"></h:outputText>
+                            <h:inputText value="#{beanActualizarInstructor.APELLIDO1}"></h:inputText>
+
+                            <h:outputText value="Segundo Apellido:"></h:outputText>
+                            <h:inputText value="#{beanActualizarInstructor.APELLIDO2}"></h:inputText>
+
+                            <h:outputText value="Provincia:"></h:outputText>
+                            <h:selectOneMenu label="pro" value="#{beanActualizarInstructor.COD_PROVINCIA}" onchange="submit()" id="pro">
+                                <f:selectItems value="#{beanActualizarInstructor.listaProvincia}"></f:selectItems>
+                            </h:selectOneMenu>
+                            
+                            <h:outputText value="Cantón:"></h:outputText>
+                            <h:selectOneMenu value="#{beanActualizarInstructor.COD_CANTON}" onchange="submit()">
+                                <f:selectItems value="#{beanActualizarInstructor.listaCantonPorProvincia}"></f:selectItems>
+                            </h:selectOneMenu>
+                            
+                            <h:outputText value="Distrito:"></h:outputText>
+                            <h:selectOneMenu value="#{beanActualizarInstructor.COD_DISTRITO}" onchange="submit()">
+                                <f:selectItems value="#{beanActualizarInstructor.listaDistritoPorCanton}"></f:selectItems>
+                            </h:selectOneMenu>
+                            
+                            <h:outputText value="Barrio:"></h:outputText>
+                            <h:selectOneMenu value="#{beanActualizarInstructor.COD_BARRIO}" onchange="submit()">
+                                <f:selectItems value="#{beanActualizarInstructor.listaBarrioPorDistrito}"></f:selectItems>
+                            </h:selectOneMenu>
+                            
+                            <h:outputText value="Otras Señas:"></h:outputText>
+                            <h:inputText value="#{beanActualizarInstructor.OTRAS_SENAS}"></h:inputText>
+
+                            <h:outputText value="Correo:"></h:outputText>
+                            <h:inputText value="#{beanActualizarInstructor.DSC_CORREO}"></h:inputText>
+                            
+                            <h:outputText value="Contraseña Temporal:"></h:outputText>
+                            <h:inputText value="#{beanActualizarInstructor.CONTRASENA}"></h:inputText>
+                            
+                            <h:outputText value="Disciplina Deportiva: "></h:outputText>
+                            <h:selectOneMenu value="#{beanActualizarInstructor.COD_DISCIPLINA_DEPORTIVA}">
+                                <f:selectItem itemLabel="1 - Futbol" itemValue="1"></f:selectItem>
+                                <f:selectItem itemLabel="2 - Ciclismo" itemValue="2"></f:selectItem>
+                                <f:selectItem itemLabel="3 - Atletismo" itemValue="3"></f:selectItem>
+                            </h:selectOneMenu>
+
+                        </h:panelGrid>
+                        <h:commandButton class="button" value="Guardar Cambios" actionListener="#{beanActualizarInstructor.guardarPersona()}" ></h:commandButton>
+                        <h:commandButton class="button" value="Nuevo" actionListener="#{beanActualizarInstructor.limpiarCampos()}" ></h:commandButton>
+                        
+                        <h:outputText value="#{beanActualizarInstructor.mensaje}" style="color: red; size: 18px"></h:outputText>
+                        
+                    </h:form>
+
+                </div>
+                <div class="w3-third w3-container">
+
+                    <h:form>
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputText value="Agregar Telefono:"></h:outputText>
+                            <h:inputText value="#{beanActualizarInstructor.DSC_TELEFONO}"></h:inputText>
+                            <h:commandButton class="button" value="Guardar Telefono" actionListener="#{beanActualizarInstructor.guardarTelefono}" ></h:commandButton>
+                            <br></br>
+                            <br></br>
+                            <h:outputText value="#{beanActualizarInstructor.mensajeTelefono}" style="color: red; size: 18px"></h:outputText>
+                        </h:panelGrid>
+                    </h:form>
+
+                </div>
+            </div>
+
+
+            <footer id="myFooter">
+                <div class="w3-container w3-theme-l2 w3-padding-32">
+                    <h4>Gym Virtual</h4>
+                </div>
+
+                <div class="w3-container w3-theme-l1">
+                    <p>Powered by <a href="#" target="_blank">Online Gym</a></p>
+                </div>
+            </footer>
+
+            <!-- END MAIN -->
+        </div>
+    </h:body>
+</html>
