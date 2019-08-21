@@ -85,7 +85,7 @@ public class beanActualizarInstructor implements Serializable {
 
         if (user != null) {
             try {
-                oPersona = (Persona) user;
+                this.oPersona = (Persona) user;
                 int id = oPersona.getCOD_PERSONA();
                 this.setLogin(id);
 
@@ -96,27 +96,6 @@ public class beanActualizarInstructor implements Serializable {
             context.invalidateSession();
         }
     }
-    
-//    public void cerrarSesion(){
-//        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("Usuario");
-//
-//        final ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-//        final Map<String, Object> session = context.getSessionMap();
-//        final Object user = session.get("Usuario");
-//
-//        if (user != null) {
-//            try {
-//                oPersona = (Persona) user;
-//                int id = oPersona.getCOD_PERSONA();
-//                this.setLogin(id);
-//
-//            } catch (ClassCastException e) {
-//
-//            }
-//        } else {
-//            context.invalidateSession();
-//        }
-//    }
     
     public void cargarUsuarioSesion() throws SNMPExceptions, SQLException{
         Persona oPer = new Persona();
@@ -321,6 +300,8 @@ public class beanActualizarInstructor implements Serializable {
 
             if (this.getCOD_TIPO_IDENTIFICACION() == 0) {
                 this.setMensaje("Seleccione un tipo de identificacion");
+            } else if (this.getLogin() == 0) {
+                this.setMensaje("El usuario no se encunetra en sesion, ingrese nuevamente");
             } else if (this.getCOD_PERSONA() == 0) {
                 this.setMensaje("Escriba el número de identificación");
 //            } else if (vDB.consultaPersona(this.getCOD_PERSONA()) == true) {
@@ -366,6 +347,7 @@ public class beanActualizarInstructor implements Serializable {
                 vCan.setCOD_ROL(2);
 
                 vDB.actualizarInstructor(vCan);
+
                 
                 this.setMensaje("Actualizacion exitosa!");
             }

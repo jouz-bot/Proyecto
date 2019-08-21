@@ -3,10 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
-        <title>Reigistro de Actividad</title>
+        <title>Cambio de contraseña</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
         <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css"/>
@@ -41,23 +40,23 @@
                 box-sizing: content-box;
             }
             .logo {
-                width: 5%
-            }
-
-            .detail {
-                width: 95%;
-                padding-left: 25px;
-            }
-
-            .detail td {
-                font-size: 24px;
-            }
-
-            .ui-datascroller .ui-datascroller-item {
-                border-bottom: 1px solid #A8A8A8;
-                padding: 25px 10px;
-
-            }
+        width: 5%
+    }
+     
+    .detail {
+        width: 95%;
+        padding-left: 25px;
+    }
+     
+    .detail td {
+        font-size: 24px;
+    }
+     
+    .ui-datascroller .ui-datascroller-item {
+        border-bottom: 1px solid #A8A8A8;
+        padding: 25px 10px;
+       
+    }
         </style>
 
     </h:head>
@@ -81,11 +80,12 @@
             <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
                 <i class="fa fa-remove"></i>
             </a>
-            <h4 class="w3-bar-item"><b>Menu</b></h4>
-            <a class="w3-bar-item w3-button w3-hover-black" href="#{request.contextPath}/faces/registrarPlanEntrenamiento.xhtml">Registrar Plan de Entrenamiento</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="#{request.contextPath}/faces/consultarActividad.xhtml">Consultar Actividad</a>
+            <h4 class="w3-bar-item"><b>Menú</b></h4>
+            <a class="w3-bar-item w3-button w3-hover-black" href="verPlanEntrenamiento.xhtml">Plan de Entrenamiento</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="RegistroActividad.xhtml">Registrar Actividad</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="#">Gráfica de Entrenamiento</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="#">Actualizar Perfil</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="actualizarPerfilDeportista.xhtml">Actualizar Perfil</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="cambiarContrasenaDeportista.xhtml.xhtml">Cambiar Contraseña</a>
         </nav>
 
 
@@ -95,58 +95,25 @@
 
             <div class="w3-row w3-padding-64">
                 <div class="w3-twothird w3-container">
-                    <h1 class="w3-text-teal">Consultar Actividad</h1>
+                    <h1 class="w3-text-teal">Cambiar Contraseña</h1>
 
                     <!-- prime faces -->
                     <h:form> 
 
-                        <p:outputLabel value="Deportista:"></p:outputLabel>
-                        <p:selectOneMenu style="width: 200px">
-                            <f:selectItem></f:selectItem>
-                        </p:selectOneMenu>
+
+                        <h:outputText value="Digite su nueva contraseña:        "></h:outputText>
+                        <h:inputText value="#{beanCambiarContrasena.password1}"></h:inputText>
                         <br></br>
                         <br></br>
-                        <p:commandButton value="Consultar"  ></p:commandButton>
+                        <h:outputText value="Verifique su nueva contraseña:        "></h:outputText>
+                        <h:inputText value="#{beanCambiarContrasena.password2}"></h:inputText>
                         <br></br>
                         <br></br>
-                        
-                        <p:dataScroller  var="car" chunkSize="10">
-                            <f:facet name="header">
-                                Planes
-                            </f:facet>
+                        <h:outputText value="#{beanCambiarContrasena.mensajeError}" style="color: red; size: 18px"></h:outputText>
+                        <br></br>
+                        <br></br>
+                        <h:commandButton class="button" value="Cambiar Contraseña" actionListener="#{beanCambiarContrasena.guardarContrasena()}" ></h:commandButton>
 
-                            <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
-
-                                <p:graphicImage ></p:graphicImage>
-
-                                <p:outputPanel>
-                                    <h:panelGrid columns="2" cellpadding="5">
-
-                                        
-
-                                        <h:outputText value="Fecha de inicio"></h:outputText>
-                                        <h:outputText  style="font-weight: bold"></h:outputText>
-
-                                        <h:outputText value="Fecha limite"></h:outputText>
-                                        <h:outputText  style="font-weight: bold"> </h:outputText>
-
-
-                                        <h:outputText value="Actividad deportiva"></h:outputText>
-                                        <h:outputText  style="font-weight: bold"></h:outputText>
-
-                                        <h:outputText value="Duración"></h:outputText>
-                                        <h:outputText  style="font-weight: bold"></h:outputText>
-
-                                        <h:outputText value="Cantidad repeticiones"></h:outputText>
-                                        <h:outputText  style="font-weight: bold"></h:outputText>
-
-                                        <h:outputText value="Explicación"></h:outputText>
-                                        <h:outputText  style="font-weight: bold"></h:outputText>
-
-                                    </h:panelGrid>
-                                </p:outputPanel>
-                            </h:panelGrid>
-                        </p:dataScroller>
                     </h:form>
 
                 </div>
