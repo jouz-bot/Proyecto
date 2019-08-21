@@ -36,6 +36,8 @@ public class beanConsultarDeportistasAsignados implements Serializable {
     LinkedList<vistaDeportista> listaDeportistas = new LinkedList<vistaDeportista>();
     /**
      * Creates a new instance of beanConsultarDeportistasAsignados
+     * @throws dao.SNMPExceptions
+     * @throws java.sql.SQLException
      */
     public beanConsultarDeportistasAsignados() throws SNMPExceptions, SQLException {
         getConsultarSesion();
