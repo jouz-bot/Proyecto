@@ -131,7 +131,7 @@
                                     <f:facet name="header">
                                         <h:outputText value="Filtrar"></h:outputText>
                                     </f:facet>
-                                    <h:commandLink value="Filtrar" actionListener="#{beanAsignacionDeportistaInstructor.ListaFiltroTablaVistaInstr(asi.DCS_PROVINCIA, asi.DSC_CANTON, asi.DSC_DISPLINA_DEPORTIVA,asi.COD_DEPORTISTA)}" ></h:commandLink>
+                                    <h:commandLink value="Filtrar" actionListener="#{beanAsignacionDeportistaInstructor.ListaFiltroTablaVistaInstr(asi.DCS_PROVINCIA, asi.DSC_CANTON, asi.DSC_DISPLINA_DEPORTIVA,asi.COD_DEPORTISTA, asi.COD_PERSONA)}" ></h:commandLink>
                                 </h:column>
                             </h:dataTable>
 
@@ -185,7 +185,12 @@
                                 </h:column>
                             </h:dataTable>
                             <center>
-                                <h:outputText style="color:blue" value="#{beanAsignacionDeportistaInstructor.mensaje}"></h:outputText>  
+                                <h:outputText style="color:blue" value="#{beanAsignacionDeportistaInstructor.mensaje}"></h:outputText> 
+                               
+                            </center>
+                            <center>
+                               
+                                <h:outputText style="color:blue" value="#{beanAsignacionDeportistaInstructor.mensajeCorreo}"></h:outputText>
                             </center>
 
 

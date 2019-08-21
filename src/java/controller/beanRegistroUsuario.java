@@ -605,8 +605,9 @@ public class beanRegistroUsuario implements Serializable {
             String destino = per.getDSC_CORREO();
             String asunto = "Bienvenido a FitCRapp";
             String mensajeCorreo = "Bienvenido "+per.getNOMBRE_PERSONA()+" "+per.getAPELLIDO1()+" "+ 
-                    per.getAPELLIDO2()+"\n"
-                    +"¡Gracias por formar parte de la comunidad FitCRapp! Es genial verte por aquí.";
+                    per.getAPELLIDO2()+"\n\n"
+                    +"¡Gracias por formar parte de la comunidad FitCRapp! Es genial verte por aquí.\n\n"
+                    +"En cuanto se le asigne un instructor recibirá un nuevo correo con la información";
 
             Correo objCorreo = new Correo();
 

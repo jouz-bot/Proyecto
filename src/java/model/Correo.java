@@ -69,7 +69,7 @@ public class Correo {
             try {
                 //correo(cuenta propia de gmail) del usuario para mandar mails
                 String usuarioCorreo = "ezeta506@gmail.com";
-                String pass = "xxx";
+                String pass = "naturall";
 
                 Properties p = new Properties();
                 p.put("mail.smtp.host", "smtp.gmail.com");
