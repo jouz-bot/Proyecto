@@ -97,6 +97,27 @@ public class beanActualizarInstructor implements Serializable {
         }
     }
     
+//    public void cerrarSesion(){
+//        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("Usuario");
+//
+//        final ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+//        final Map<String, Object> session = context.getSessionMap();
+//        final Object user = session.get("Usuario");
+//
+//        if (user != null) {
+//            try {
+//                oPersona = (Persona) user;
+//                int id = oPersona.getCOD_PERSONA();
+//                this.setLogin(id);
+//
+//            } catch (ClassCastException e) {
+//
+//            }
+//        } else {
+//            context.invalidateSession();
+//        }
+//    }
+    
     public void cargarUsuarioSesion() throws SNMPExceptions, SQLException{
         Persona oPer = new Persona();
         oPer = this.getoPersona();
@@ -346,7 +367,7 @@ public class beanActualizarInstructor implements Serializable {
 
                 vDB.actualizarInstructor(vCan);
                 
-                this.setMensaje("Actaulizacion exitosa!");
+                this.setMensaje("Actualizacion exitosa!");
             }
 
         } catch (Exception e) {

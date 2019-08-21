@@ -316,7 +316,7 @@ public class PersonaDB {
                 + " NOMBRE_PERSONA='" + NOMBRE_PERSONA + "', APELLIDO1='" + APELLIDO1 + "', APELLIDO2='" + APELLIDO2 + "',"
                 + " COD_PROVINCIA=" + COD_PROVINCIA + ", COD_CANTON=" + COD_CANTON + ", COD_DISTRITO=" + COD_DISTRITO + ","
                 + " COD_BARRIO=" + COD_BARRIO + ", OTRAS_SENAS='" + OTRAS_SENAS + "', DSC_CORREO='" + DSC_CORREO + "', CONTRASENA='" + CONTRASENA + "',"
-                + " COD_DISCIPLINA_DEPORTIVA=" + COD_DISCIPLINA_DEPORTIVA + ", COD_DEPORTISTA=" + COD_DEPORTISTA + " , COD_ROL=" + COD_ROL + " ;";
+                + " COD_DISCIPLINA_DEPORTIVA=" + COD_DISCIPLINA_DEPORTIVA + ", COD_DEPORTISTA=" + COD_DEPORTISTA + " , COD_ROL=" + COD_ROL + "where COD_PERSONA = '" + COD_PERSONA +"' ;";
         //Se ejecuta la sentencia SQL
         accesoDatos.ejecutaSQL(insert);
 
