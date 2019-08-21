@@ -51,11 +51,10 @@
         <div class="w3-top">
             <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
                 <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-                <a href="#" class="w3-bar-item w3-button w3-theme-l1">Logo</a>
-                <a href="#{request.contextPath}/faces/inicioDeportista.xhtml" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Inicio</a>
-                <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contactos</a>
-                <a href="#{request.contextPath}/faces/acceso.xhtml" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Ingresar</a>
-                <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Ayuda</a>
+                <a href="#" class="w3-bar-item w3-button w3-theme-l1">Online Gym</a>
+                <a href="#{request.contextPath}/faces/contactos.xhtml" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contactos</a>
+                <a href="#{request.contextPath}/faces/ayuda.xhtml" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Ayuda</a>
+                <a onclick="#{beanCerarSesion.cerrarSesion()}" href="index.xhtml" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Salir</a>
             </div>
         </div>
 
@@ -65,10 +64,11 @@
                 <i class="fa fa-remove"></i>
             </a>
             <h4 class="w3-bar-item"><b>Menú</b></h4>
-            <a class="w3-bar-item w3-button w3-hover-black" href="#{request.contextPath}/faces/verPlanEntrenamiento.xhtml">Plan de Entrenamiento</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="#{request.contextPath}/faces/RegistroActividad.xhtml">Registrar Actividad</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="verPlanEntrenamiento.xhtml">Plan de Entrenamiento</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="RegistroActividad.xhtml">Registrar Actividad</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="#">Gráfica de Entrenamiento</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="#{request.contextPath}/faces/actualizarPerfilDeportista.xhtml">Actualizar Perfil</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="actualizarPerfilDeportista.xhtml">Actualizar Perfil</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="cambiarContrasenaDeportista.xhtml.xhtml">Cambiar Contraseña</a>
         </nav>
 
 

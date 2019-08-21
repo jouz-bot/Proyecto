@@ -201,7 +201,6 @@ public class AsignacionDeportistaInstructorDB {
     
     //Metodo buscar deportista asignado
         public LinkedList<vistaDeportista> tablaDeportistaAsignados(int id) throws SNMPExceptions, SQLException {
-        String select1;
         String select;
         LinkedList<vistaDeportista> listaDepo = new LinkedList<vistaDeportista>();
 
@@ -212,8 +211,9 @@ public class AsignacionDeportistaInstructorDB {
 
             //Se crea la sentencia de búsqueda
             select = "SELECT PERSONA.NOMBRE_PERSONA, PERSONA.APELLIDO1 "
-                    + "FROM PERSONA LEFT JOIN ASIGNACION_DEPORTISTA_INSTRUCTOR ON PERSONA.COD_DEPORTISTA = ASIGNACION_DEPORTISTA_INSTRUCTOR.COD_DEPORTISTA "
-                    + "WHERE ASIGNACION_DEPORTISTA_INSTRUCTOR.COD_PERSONA = '" + id +"' ";
+                    + "FROM PERSONA LEFT JOIN ASIGNACION_DEPORTISTA_INSTRUCTOR ON PERSONA.COD_DEPORTISTA = ASIGNACION_DEPORTISTA_INSTRUCTOR.COD_DEPORTISTA"
+                    + " INNER JOIN DEPORTISTA ON DEPORTISTA.COD_DEPORTISTA = ASIGNACION_DEPORTISTA_INSTRUCTOR.COD_DEPORTISTA "
+                    + "WHERE ASIGNACION_DEPORTISTA_INSTRUCTOR.COD_PERSONA = "+ id +"; ";
             //Se ejecuta la sentencia SQL
             ResultSet rsPA = accesoDatos.ejecutaSQLRetornaRS(select);
             //Se llena el arryaList con los proyectos   
