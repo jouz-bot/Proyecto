@@ -5,10 +5,15 @@
  */
 package controller;
 
+import dao.SNMPExceptions;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.LinkedList;
+import javax.faces.model.SelectItem;
 import model.PlanEntrenamiento;
 import model.PlanEntrenamientoDB;
 
@@ -29,6 +34,7 @@ public class beanPlanEntrenamiento implements Serializable {
     private String DURACION;
     private int REPETICIONES = 0;
     private int COD_ASIGNACION_DEPORTISTA_INSTRUCTOR = 0;
+    private LinkedList<SelectItem> listaPlaCmb= new LinkedList();
     
     private PlanEntrenamiento planEntrenamiento;
     private PlanEntrenamientoDB planEntrenamientoDB = new PlanEntrenamientoDB();
@@ -40,6 +46,35 @@ public class beanPlanEntrenamiento implements Serializable {
     }
     
     //Metodos SET y GET
+
+    public LinkedList<SelectItem> getListaPlaCmb() throws SNMPExceptions, SQLException{
+
+        
+        LinkedList<PlanEntrenamiento> lista= new LinkedList<PlanEntrenamiento>();
+        PlanEntrenamientoDB planDB= new PlanEntrenamientoDB();
+        
+        lista=planDB.ComboPlan();
+        
+        LinkedList resultList= new LinkedList();
+        resultList.add(new SelectItem(0,"Seleccione su plan"));
+        
+        for(Iterator iter= lista.iterator();
+                iter.hasNext();){
+            
+            PlanEntrenamiento plan= (PlanEntrenamiento)iter.next();
+          int  Cod_Plan = plan.getCOD_PLAN_ENTRENAMIENTO();
+          String  dsc_plan = plan.getDSC_PLAN_ENTRENAMIENTO();
+            resultList.add(new SelectItem(Cod_Plan,dsc_plan));
+            
+        }
+        return resultList;
+    }
+
+    public void setListaPlaCmb(LinkedList<SelectItem> listaPlaCmb) {
+        this.listaPlaCmb = listaPlaCmb;
+    }
+    
+    
 
     public int getCOD_PLAN_ENTRENAMIENTO() {
         return COD_PLAN_ENTRENAMIENTO;
