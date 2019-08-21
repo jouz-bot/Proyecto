@@ -80,7 +80,7 @@
 
                     <!-- prime faces -->
                     <h:form>
-                        
+
 
                         <h:panelGrid columns="2" cellpadding="5">
 
@@ -149,31 +149,36 @@
 
                         <h:commandButton class="button" value="Guardar" actionListener="#{beanRegistroUsuario.guardarDeportista()}" ></h:commandButton>
                         <h:commandButton class="button" value="Nuevo" actionListener="#{beanRegistroUsuario.limpiarCampos()}" ></h:commandButton>
-
+                        <br></br>
+                        <br></br>
+                        <h:outputLabel value="#{beanRegistroUsuario.mensaje}" style="color: red; size: 18px" ></h:outputLabel>
+                        <br></br>
+                        <br></br>
+                        <h:outputLabel value="#{beanRegistroUsuario.mensajeCorreo}" style="color: red; size: 18px" ></h:outputLabel>
 
                     </h:form>
-                    <h:outputLabel value="#{beanRegistroUsuario.mensaje}" ></h:outputLabel>
+
                 </div>
                 <div class="w3-third w3-container">
 
                     <h:form>
-                        
+
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputLabel value="Agregar Telefono:"></h:outputLabel>
                             <h:inputText value="#{beanRegistroUsuario.DSC_TELEFONO}"></h:inputText>
                             <h:commandButton class="button" value="Guardar" actionListener="#{beanRegistroUsuario.guardarTelefono()}" ></h:commandButton>
-                            <h:outputText value="#{beanRegistroUsuario.mensaje}"></h:outputText>
+                            <h:outputText value="#{beanRegistroUsuario.mensajeTelefono}"></h:outputText>
                         </h:panelGrid>
                     </h:form>
 
                     <h:form>
                         <p:growl id="msgs" showDetail="true"></p:growl>
                         <h:panelGrid columns="2" cellpadding="5">
-<!--                            <p:outputLabel value="Disciplina deportiva:"></p:outputLabel>
-                            <p:selectOneMenu style="width: 200px">
-                                <f:selectItem></f:selectItem>
-                            </p:selectOneMenu>
-                            <p:commandButton value="Guardar"  ></p:commandButton>-->
+                            <!--                            <p:outputLabel value="Disciplina deportiva:"></p:outputLabel>
+                                                        <p:selectOneMenu style="width: 200px">
+                                                            <f:selectItem></f:selectItem>
+                                                        </p:selectOneMenu>
+                                                        <p:commandButton value="Guardar"  ></p:commandButton>-->
                         </h:panelGrid>
                     </h:form>
                 </div>
